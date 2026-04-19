@@ -1,0 +1,422 @@
+{
+  "description": "I wanna make a iphone 17 pro review video.",
+  "videos": [
+    {
+      "video_id": "q0aFOxT6TNw",
+      "title": null,
+      "channel_title": null,
+      "stats": {
+        "view_count": null,
+        "like_count": null,
+        "comment_count": null
+      },
+      "transcript_found": true,
+      "warnings": [
+        "Running in transcript-only mode because YOUTUBE_API_KEY is not set."
+      ],
+      "predicted_most_viewed_moment": {
+        "start": 140.0,
+        "end": 180.0,
+        "headline": "Big telephoto upgrade — 48MP 4x gives much sharper zoom",
+        "rationale": "This segment concisely explains a visible, high-impact hardware change (telephoto moved to 48MP and a 4x ~100mm equivalent) and immediately promises a clear viewer payoff — more detail and less noise in zoom shots. That's the exact kind of concrete camera upgrade clip viewers will seek when comparing iPhone generations or deciding to upgrade.",
+        "supporting_evidence": [
+          "the telephoto gets a big update. It's now also a 48-megapixel camera and it's a 4X telephoto lens.",
+          "It's roughly a hundred millimeter equivalent and all of your zoom shots will have much more detail and much less noise, thanks to the sensor being much larger and much higher resolution.",
+          "they do specifically process each of the images shot in a 2X crop to be slightly sharper and better looking than just a pure digital crop"
+        ],
+        "confidence": 0.92,
+        "related_user_goal": "Use as a headline camera upgrade section in an iPhone 17 Pro review video"
+      },
+      "highlight_moments": [
+        {
+          "start": 140.0,
+          "end": 180.0,
+          "headline": "Big telephoto upgrade — 48MP 4x gives much sharper zoom",
+          "rationale": "Concrete, high-payoff technical change that maps directly to viewer upgrade questions and camera comparison clips.",
+          "supporting_evidence": [
+            "the telephoto gets a big update. It's now also a 48-megapixel camera and it's a 4X telephoto lens.",
+            "It's roughly a hundred millimeter equivalent and all of your zoom shots will have much more detail and much less noise, thanks to the sensor being much larger and much higher resolution.",
+            "they do specifically process each of the images shot in a 2X crop to be slightly sharper and better looking than just a pure digital crop on the middle of the sensor."
+          ],
+          "confidence": 0.92,
+          "related_user_goal": "Use as a headline camera upgrade section in an iPhone 17 Pro review video"
+        },
+        {
+          "start": 240.0,
+          "end": 280.0,
+          "headline": "ProRes RAW, huge files — plus genlock support for pro workflows",
+          "rationale": "Calls out pro video workflow features (editable ISO/white balance in post via ProRes RAW and genlock support) that will attract creators and professionals looking for workflow validation or comparison to other cameras.",
+          "supporting_evidence": [
+            "what you're watching right now is ProRes raw footage from the iPhone 17 Pro",
+            "I can literally change ISO and white balance after I shoot, which is very useful.",
+            "there's even another Pro feature... that's genlock support, which basically lets devices talk to each other so that they can stay in sync over large, multi-device shoots. Pretty sick."
+          ],
+          "confidence": 0.88,
+          "related_user_goal": "Highlight professional video features and creator workflow benefits in review"
+        },
+        {
+          "start": 560.0,
+          "end": 580.0,
+          "headline": "Thicker phones = much bigger batteries (Pro Max >5000mAh)",
+          "rationale": "Short, concrete trade-off explanation (thicker design enables much larger battery) plus a headline stat (Pro Max >5000 mAh) — valuable for viewers prioritizing battery life and for simple comparison graphics or captions.",
+          "supporting_evidence": [
+            "having an iPhone Air focusing on getting super thin... let them feel free to go the total other direction",
+            "the 17 Pro has a 20% bigger battery than last year, and the Pro Max actually cracks the 5,000 milliamp hour mark"
+          ],
+          "confidence": 0.86,
+          "related_user_goal": "Use when comparing battery life and build trade-offs in iPhone 17 Pro review"
+        }
+      ],
+      "creator_takeaways": [
+        "Lead your video with the telephoto soundbite: clip 140–180’s sentence about the 48MP 4x (~100mm) telephoto — use it as a thumbnail text (e.g., “48MP 4x Zoom!”) and as the headline line in your camera section so viewers instantly know the concrete upgrade.",
+        "When covering video features, include a short demo frame: quote the line “I can literally change ISO and white balance after I shoot” (240–260) and note the downside immediately after — “but the files are huge” — so you give creators both the benefit and the practical constraint in one sentence.",
+        "For battery/build discussion, use the crisp stat and trade-off phrasing from 560–580: say “17 Pro: +20% battery vs last year; Pro Max: >5,000 mAh” and pair it with a quick one-liner like “they got thicker to get much longer real-world battery life” to make the trade-off clear and clickable.",
+        "Add short timestamps in your description linking to these moments (e.g., 2:20 Telephoto upgrade — 48MP 4x; 4:00 ProRes RAW & genlock; 9:20 Battery & build) — the transcript evidence shows viewers will seek these exact topics.",
+        "Include a one-sentence callout for creators in the description: reference ProRes RAW + genlock explicitly and link to your Final Cut workflow example or a small file-size warning to reduce friction for viewers trying to replicate your setup."
+      ],
+      "comments_considered": [],
+      "transcript_chunks_analyzed": 22
+    },
+    {
+      "video_id": "I-bniNgNaws",
+      "title": null,
+      "channel_title": null,
+      "stats": {
+        "view_count": null,
+        "like_count": null,
+        "comment_count": null
+      },
+      "transcript_found": true,
+      "warnings": [
+        "Running in transcript-only mode because YOUTUBE_API_KEY is not set."
+      ],
+      "predicted_most_viewed_moment": {
+        "start": 260.0,
+        "end": 300.0,
+        "headline": "Camera wins: more accurate photos and rock-solid video stabilization",
+        "rationale": "This segment makes concrete, replayable claims (48MP sensors, 4x full-quality zoom to 40x digital, 4K@120fps) and shows stabilized handheld footage — the kind of visual proof viewers rewatch to judge camera quality. Transcript lines explicitly call out Apple fixing exposure/overcorrection and the impressive stabilization, giving viewers both specs and observable results to compare.",
+        "supporting_evidence": [
+          "The cameras on the Pro are absolutely incredible.",
+          "Coming with a 48-megapixel wide, main, and telephoto lens... zoom out four times full quality all the way up to 40 times digital zoom.",
+          "Apple fixed a lot of issues... now it just feels like when I take a photo, the end result is pretty similar to what I saw when I was taking it.",
+          "Video... taking up to 4K 120 frames per second... just how stable this footage is, even though it was shot all by hand without a gimbal"
+        ],
+        "confidence": 0.9,
+        "related_user_goal": "I wanna make a iphone 17 pro review video."
+      },
+      "highlight_moments": [
+        {
+          "start": 260.0,
+          "end": 300.0,
+          "headline": "Camera wins: more accurate photos and rock-solid video stabilization",
+          "rationale": "This segment makes concrete, replayable claims (48MP sensors, 4x full-quality zoom to 40x digital, 4K@120fps) and shows stabilized handheld footage — the kind of visual proof viewers rewatch to judge camera quality. Transcript lines explicitly call out Apple fixing exposure/overcorrection and the impressive stabilization, giving viewers both specs and observable results to compare.",
+          "supporting_evidence": [
+            "The cameras on the Pro are absolutely incredible.",
+            "Coming with a 48-megapixel wide, main, and telephoto lens, this camera system allows you to take ultra-wide photos for a wide shot, beautiful standard photos, and then zoom out four times full quality all the way up to 40 times digital zoom.",
+            "Apple fixed a lot of issues... now it just feels like when I take a photo, the end result is pretty similar to what I saw when I was taking it.",
+            "Video... taking up to 4K 120 frames per second... just how stable this footage is, even though it was shot all by hand without a gimbal"
+          ],
+          "confidence": 0.9,
+          "related_user_goal": "I wanna make a iphone 17 pro review video."
+        },
+        {
+          "start": 0.0,
+          "end": 20.0,
+          "headline": "6 months later: Is the iPhone 17 Pro worth its hefty price?",
+          "rationale": "Strong opener that frames the video as a long-term review and asks the central question viewers care about: value vs. price. It establishes credibility ('6 months of using... primary device') and functions as an effective hook that viewers are likely to rewatch or share.",
+          "supporting_evidence": [
+            "So, here we are. 6 months of using the iPhone 17 Pro as my primary device.",
+            "But, is the 17 Pro with that hearty price tag worth it? At the end of the day, is it maybe too much power for what I need? Let's get into it."
+          ],
+          "confidence": 0.9,
+          "related_user_goal": "I wanna make a iphone 17 pro review video."
+        },
+        {
+          "start": 360.0,
+          "end": 440.0,
+          "headline": "Unexpected flaw: persistent Bluetooth problems despite warranty",
+          "rationale": "This is a tension moment that contrasts the otherwise positive review: an ongoing Bluetooth issue isolated to the reviewer's unit. Viewers will rewatch to hear symptoms and likely comment with fixes or their own experiences — good for engagement and buyer decision-making.",
+          "supporting_evidence": [
+            "But, the one problem that I have noticed over my time with this phone is a huge issue with Bluetooth.",
+            "even while I'm under warranty, which is crazy. It's worth noting that all of my other iPhones still work without this issue, so it is isolated to this phone.",
+            "Now, I'm not saying that this is an issue for everybody... but if you are experiencing similar Bluetooth issues, or you have other fixes, let me know that down in the comments."
+          ],
+          "confidence": 0.85,
+          "related_user_goal": "I wanna make a iphone 17 pro review video."
+        }
+      ],
+      "creator_takeaways": [
+        "Lead with the \"6 months later\" angle in both title and description: e.g., Title: \"iPhone 17 Pro — 6 Months Later: Worth the Price?\" Description first line: \"I've used the iPhone 17 Pro as my daily driver for 6 months — here are the real wins and the one persistent issue.\" (Anchored to transcript opener.)",
+        "Feature the camera claims as the thumbnail and first chapter: call out \"48MP | 4x lossless → 40x\" and \"4K@120fps handheld stabilization\" so viewers immediately know you're showing concrete specs + footage (anchors: transcript lines about 48MP, 4x full-quality, 4K@120fps, stabilization).",
+        "Include an explicit battery stat in the description and chapters: \"Average daily battery left: ~25% with 5.5 hrs screen-on\" — that's a searchable, concrete data point mentioned in the video (transcript: 25% left, 5 and 1/2 hours SOT).",
+        "Call out the Bluetooth issue in the description and invite help: add a line like \"Persistent Bluetooth problems on my unit — details at 6:00 — comment if you've fixed this\" to prompt comments and troubleshooting from viewers (anchored to transcript 360–440).",
+        "Add timestamped chapters matching the highlight moments (example timestamps): 0:00 — \"6 Months Later: Worth It?\", 4:20 — \"Cameras: 48MP & Stabilization\", 6:00 — \"Bluetooth Problem (My Unit)\". These exact labels map to the transcript segments and improve discoverability and watchability.",
+        "Use concrete visual thumbnail elements: a close-up of the camera plateau with overlaid text \"6 MONTHS LATER\" and a short subtext \"Worth it?\" — this ties the long-term test claim to the camera-centric ‘most replayed’ content (supported by the camera-focused highlight)."
+      ],
+      "comments_considered": [],
+      "transcript_chunks_analyzed": 18
+    },
+    {
+      "video_id": "_-AS5DtDeqs",
+      "title": null,
+      "channel_title": null,
+      "stats": {
+        "view_count": null,
+        "like_count": null,
+        "comment_count": null
+      },
+      "transcript_found": true,
+      "warnings": [
+        "Running in transcript-only mode because YOUTUBE_API_KEY is not set."
+      ],
+      "predicted_most_viewed_moment": {
+        "start": 60.0,
+        "end": 100.0,
+        "headline": "Surprising cooling: deionized water cycling in a vapor chamber",
+        "rationale": "This moment combines a clear, novel technical claim with vivid language and sound design — “cycles deionized water between liquid and gas within a vapor chamber … laser-welded to the chassis” — which makes it both surprising and easy to clip. Viewers interested in performance/thermals (and tech enthusiasts who enjoy ‘how it works’ explanations) are likely to replay to absorb the mechanism and the exact wording.",
+        "supporting_evidence": [
+          "“Built for Apple Intelligence, this is the most powerful chip ever made ... So we designed a new cooling system.”",
+          "“It cycles deionized water between liquid and gas within a vapor chamber ... laser-welded to the chassis that rapidly dissipates heat throughout the unibody.”"
+        ],
+        "confidence": 0.93,
+        "related_user_goal": "Highlight thermal management and real-world performance implications in the review."
+      },
+      "highlight_moments": [
+        {
+          "start": 60.0,
+          "end": 100.0,
+          "headline": "Surprising cooling: deionized water cycling in a vapor chamber",
+          "rationale": "Novel technical detail and surprise factor — a phone that cycles deionized water between liquid and gas is memorable and likely to be heavily rewatched. Great for a technical deep-dive or visual explainer in a review.",
+          "supporting_evidence": [
+            "“Built for Apple Intelligence, this is the most powerful chip ever made ... So we designed a new cooling system.”",
+            "“It cycles deionized water between liquid and gas within a vapor chamber ... laser-welded to the chassis that rapidly dissipates heat throughout the unibody.”"
+          ],
+          "confidence": 0.93,
+          "related_user_goal": "Highlight thermal management and real-world performance implications in the review."
+        },
+        {
+          "start": 180.0,
+          "end": 200.0,
+          "headline": "Genlock: Hollywood-level multi-camera synchronization",
+          "rationale": "A unique pro-oriented feature that directly speaks to creators and filmmakers. Claims like “first phone to offer genlock” are differentiators that viewers will clip/share and replay to confirm exact capability and potential uses.",
+          "supporting_evidence": [
+            "“iPhone 17 Pro lets you create setups that would be impossible with conventional cameras.”",
+            "“And this is the first phone to offer genlock, precisely synchronizing multiple cameras and creating Hollywood-level effects.”"
+          ],
+          "confidence": 0.91,
+          "related_user_goal": "Use as a standout pro-features segment aimed at creators and filmmakers in the review."
+        },
+        {
+          "start": 0.0,
+          "end": 60.0,
+          "headline": "“First aluminum unibody” — design + biggest battery claim",
+          "rationale": "Strong opening with a bold, declarative design claim and a specific product benefit (“biggest battery with the longest battery life in any iPhone”). This works well as a hook in the review and for thumbnail/text calls-to-action.",
+          "supporting_evidence": [
+            "“Introducing iPhone 17 Pro.”",
+            "“To redefine Pro, we had to start again, with solid aluminum ... to create our first aluminum unibody”",
+            "“for the biggest battery with the longest battery life in any iPhone.”"
+          ],
+          "confidence": 0.87,
+          "related_user_goal": "Use as an attention-grabbing intro and design/battery talking point in an iPhone 17 Pro review."
+        }
+      ],
+      "creator_takeaways": [
+        "Open your review with the aluminum unibody + battery line (0:00–0:60). Use the video’s exact phrasing: “first aluminum unibody” and “biggest battery with the longest battery life in any iPhone.” Put that phrase in the description’s first 1–2 lines and as the pinned comment so viewers searching for battery life/design see it immediately.",
+        "Make the vapor-chamber cooling the centerpiece of your performance section (60:00–100:00). Show a short animated diagram or on-screen caption quoting the copy: “cycles deionized water between liquid and gas within a vapor chamber, laser-welded to the chassis.” Then demonstrate real-world thermal tests (e.g., sustained gaming or ProRes export) and timestamp the results in the description (e.g., “Thermal test start — 06:12”).",
+        "Create a separate short clip/Reel for the genlock claim (180:00–200:00). Use the line “first phone to offer genlock” as your clip title and in social captions aimed at creators. In the full description, add a short bullet under Features: “Genlock — sync multiple iPhones for multi-camera shoots (see demo at 12:05).”",
+        "Use precise timestamps in the description and chapters matching these moments (0:00 Design & Battery, 1:00 Cooling, 3:00 Camera & Genlock). Exact timestamps increase watchability and make it easier for viewers to rewatch the high-interest lines identified above."
+      ],
+      "comments_considered": [],
+      "transcript_chunks_analyzed": 12
+    },
+    {
+      "video_id": "xRla0izRxqU",
+      "title": null,
+      "channel_title": null,
+      "stats": {
+        "view_count": null,
+        "like_count": null,
+        "comment_count": null
+      },
+      "transcript_found": true,
+      "warnings": [
+        "Running in transcript-only mode because YOUTUBE_API_KEY is not set."
+      ],
+      "predicted_most_viewed_moment": {
+        "start": 80.0,
+        "end": 120.0,
+        "headline": "Front camera is much wider and ProRes RAW video is now possible",
+        "rationale": "This segment combines a concrete, demo-friendly hardware change (wider front camera that fits two people on FaceTime) with a nerd-appeal feature (ProRes RAW video). Those two elements—an immediately relatable benefit plus a technical capability that invites hands-on comparison—are exactly the sort of thing viewers rewatch and clip. The transcript explicitly highlights both the practical payoff and the ProRes RAW capability: “this new front camera is the biggest example... I really like how wide it goes,” and “if you are an uber nerd like me... you can record video in ProRes RAW,” which supports high engagement from both casual viewers and creators/enthusiasts.",
+        "supporting_evidence": [
+          "\"this new front camera is the biggest example... I really like how wide it goes.\"",
+          "\"This camera is the difference between actually being able to fit two people on your side of a FaceTime call...\"",
+          "\"if you are an uber nerd like me, then the fact that you can record video in ProRes RAW is insane\""
+        ],
+        "confidence": 0.88,
+        "related_user_goal": "Show concrete visual comparisons (selfie/FaceTime framing) and demo ProRes RAW vs. normal video to make a compelling, rewatchable highlight for your iPhone 17 Pro review."
+      },
+      "highlight_moments": [
+        {
+          "start": 0.0,
+          "end": 20.0,
+          "headline": "12 GB RAM and neural accelerators got almost no attention — why that matters",
+          "rationale": "Strong opening claim that will work well as a hook. It's surprising (50% more RAM) and frames a larger thesis: Apple's hardware improvements are dramatic but under-explained, which is an excellent way to position your review and answer the \"should I upgrade\" question.",
+          "supporting_evidence": [
+            "\"these phones have 12 GB of RAM, 50% more than the previous Pro iPhones\"",
+            "\"The biggest improvement to the new A19 Pro chip is neural... accelerators. But Apple didn't demo a single tangible use case.\""
+          ],
+          "confidence": 0.86,
+          "related_user_goal": "Use as an opening hook to explain why the iPhone 17 Pro feels ahead of available software and to inform upgrade advice."
+        },
+        {
+          "start": 80.0,
+          "end": 120.0,
+          "headline": "Front camera is much wider and ProRes RAW video is now possible",
+          "rationale": "See predicted_most_viewed_moment rationale — combines an immediately visible improvement with a technical feature that creators and enthusiasts will want to see demonstrated.",
+          "supporting_evidence": [
+            "\"this new front camera is the biggest example... I really like how wide it goes.\"",
+            "\"This camera is the difference between actually being able to fit two people on your side of a FaceTime call...\"",
+            "\"if you are an uber nerd like me, then the fact that you can record video in ProRes RAW is insane\""
+          ],
+          "confidence": 0.88,
+          "related_user_goal": "Include visual comparisons and practical examples (FaceTime, selfie group shots) plus a deep-dive segment on ProRes RAW and who it’s for."
+        },
+        {
+          "start": 560.0,
+          "end": 600.0,
+          "headline": "Phones seem built for on-device AI that hasn't launched yet",
+          "rationale": "This high-level takeaway ties together many scattered hardware changes (cooling, RAM, storage) and explains them with a compelling narrative: Apple prepared the hardware for on-device AI before the software caught up. It's valuable for viewers deciding whether to buy now or wait, and it's a segment that encourages rewatching for nuance.",
+          "supporting_evidence": [
+            "\"everything about the way these phones are configured implies that they are primarily designed for heavy next‑gen Apple intelligence features on device.\"",
+            "\"Because of all the delays to Apple's AI, I think the company's in a situation where their hardware development is actually ahead of their software development.\""
+          ],
+          "confidence": 0.84,
+          "related_user_goal": "Explain long-term value and future-proofing to help viewers decide whether to upgrade now or wait."
+        }
+      ],
+      "creator_takeaways": [
+        "Timestamp and label the front camera/ProRes RAW demo (approx. 1:20). Include short clips: (a) side-by-side FaceTime framing showing one vs two people, and (b) a quick ProRes RAW vs compressed video comparison. In the description use: \"1:20 — Wider front camera + ProRes RAW demo\" exactly.",
+        "Lead with the RAM/neural accelerators hook in the video and description. Use the exact surprising stat from the transcript: \"12 GB RAM (50% more than last year)\" and a one-line follow-up: \"Apple added neural accelerators but didn't demo their use—here's what that could mean.\" Timestamp it (0:00).",
+        "Include a short, clear verdict section (timestamp ~9:20 / 560–600) titled: \"Built for AI—but not yet.\" Summarize: \"Hardware looks primed for on-device AI; software features will likely arrive later—consider waiting unless you want the best battery/screen now.\" This gives viewers a concise upgrade recommendation to scan for.",
+        "Use exact quoted phrases when possible in the description and chapter titles to increase search/keyword match: e.g., \"ProRes RAW is insane\" and \"designed for heavy next‑gen Apple intelligence features on device.\"",
+        "Add 2-3 visual thumbnail options centered on the front camera benefit: (a) a split selfie showing how much wider the new front camera is, or (b) a still labeled \"ProRes RAW?\"—both will draw clicks from casual and enthusiast audiences."
+      ],
+      "comments_considered": [],
+      "transcript_chunks_analyzed": 21
+    },
+    {
+      "video_id": "X763A7yGh5E",
+      "title": null,
+      "channel_title": null,
+      "stats": {
+        "view_count": null,
+        "like_count": null,
+        "comment_count": null
+      },
+      "transcript_found": true,
+      "warnings": [
+        "Running in transcript-only mode because YOUTUBE_API_KEY is not set."
+      ],
+      "predicted_most_viewed_moment": {
+        "start": 420.0,
+        "end": 520.0,
+        "headline": "Most complete camera setup yet — 4x optical, 8x crop, and much better front camera",
+        "rationale": "This segment contains high-impact, purchase-relevant details (optical vs crop zoom, sensor size, and front-camera megapixel jump) and comparative claims that viewers repeatedly rewatch to confirm specs and image-quality impressions. The speaker gives concrete numbers (4x optical, 8x crop, 18 MP front) and clear comparisons to competitors and last year's models, making it ideal for clips, thumbnails, and short-form promos.",
+        "supporting_evidence": [
+          "On the Pro iPhones, you get a camera system with high resolution and more importantly, large sensors to go with it.",
+          "The 4x optical is sharper than last year's 5x. And then when you do use that 8x crop in, you lose some of that sharpness because you're using a smaller portion of that sensor, but it still looks good.",
+          "If you're interested in 4K 120 frames per second video, the Pro models can do it. The iPhone Air cannot do it.",
+          "The front-facing camera is also so much better. The old one was a 12 megapixel sensor. The new one's 18 megapixels and it's a much larger sensor."
+        ],
+        "confidence": 0.93,
+        "related_user_goal": "iPhone 17 Pro review — emphasize camera improvements, zoom capabilities, and front-facing upgrades"
+      },
+      "highlight_moments": [
+        {
+          "start": 420.0,
+          "end": 520.0,
+          "headline": "Most complete camera setup yet — 4x optical, 8x crop, and much better front camera",
+          "rationale": "See predicted_most_viewed_moment rationale.",
+          "supporting_evidence": [
+            "On the Pro iPhones, you get a camera system with high resolution and more importantly, large sensors to go with it.",
+            "The 4x optical is sharper than last year's 5x. And then when you do use that 8x crop in, you lose some of that sharpness because you're using a smaller portion of that sensor, but it still looks good.",
+            "If you're interested in 4K 120 frames per second video, the Pro models can do it. The iPhone Air cannot do it.",
+            "The front-facing camera is also so much better. The old one was a 12 megapixel sensor. The new one's 18 megapixels and it's a much larger sensor."
+          ],
+          "confidence": 0.93,
+          "related_user_goal": "iPhone 17 Pro review — emphasize camera improvements, zoom capabilities, and front-facing upgrades"
+        },
+        {
+          "start": 60.0,
+          "end": 100.0,
+          "headline": "New uni-body Pro design: big, bulbous, and different in hand",
+          "rationale": "Strong, emotive description of the new physical design that pairs well with B-roll and comparison shots. The personal reaction language ('so big and bulbous', 'they've definitely grown on me') is memorable and likely to be clipped/shared.",
+          "supporting_evidence": [
+            "these are a very different and unexpected shape this year. These, right, when I first saw them, I was like, these are so big and bulbous.",
+            "They do not look or feel anything like previous generations of iPhones.",
+            "The biggest shift is just that uni-body design. This bottom panel here is now rounded. And because it's just one piece of metal that is the entire chassis, it just sits in your hand very differently."
+          ],
+          "confidence": 0.9,
+          "related_user_goal": "iPhone 17 Pro review — highlight design and ergonomics differences"
+        },
+        {
+          "start": 120.0,
+          "end": 160.0,
+          "headline": "Displays finally get 120 Hz and huge peak brightness (3,000 nits)",
+          "rationale": "Clear spec change with tangible viewer benefits (smoother UI, better outdoor visibility). The numeric claims (120 Hz, 3,000 nits) are easy to surface in thumbnails, titles, and description bullets.",
+          "supporting_evidence": [
+            "iPhone 17 finally gets the 120 Hz promotion panel.",
+            "It's a very exciting time for iPhone users because we finally have good screens across the entire lineup.",
+            "They also get brighter at the top end this year. It can go to 3,000 nits at the top outdoors and it's a lot brighter in terms of numbers than the 2,000..."
+          ],
+          "confidence": 0.88,
+          "related_user_goal": "iPhone 17 Pro review — explain display improvements and real-world impact"
+        }
+      ],
+      "creator_takeaways": [
+        "Lead your description with the camera win sentence used in the video: 'Most complete camera package yet — 4x optical, 8x crop, and a much-improved 18MP front camera (landscape selfies!)'. Include the 420–520 timestamp for quick navigation.",
+        "Add a short feature-bullet list (use exact phrases from the review): 'Uni-body Pro design — big & bulbous but ergonomic (60:00–100:00)', '120 Hz ProMotion + up to 3,000 nits peak brightness (120:00–160:00)', 'A19 Pro performance & improved thermals for sustained speed (240:00–320:00)'.",
+        "Use comparisons viewers expect: mention where it still loses to competitors (e.g., 'Still behind Pixel/Samsung in some low-light stills — see 440–460') so your review feels balanced and searchable for comparison queries.",
+        "Include a clipable timestamp CTA: 'Want just the camera deep-dive? Jump to 7:00 — camera specs, 4K120 video capability, and front-camera demo.' (map timestamps to your published timestamps)."
+      ],
+      "comments_considered": [],
+      "transcript_chunks_analyzed": 22
+    }
+  ],
+  "cross_video_summary": {
+    "recurring_patterns": [
+      "Camera-first storytelling: every video centers a camera change (telephoto resolution/optical zoom, front-camera width, ProRes RAW) as the primary replayable moment.",
+      "Use of concise, quotable soundbites: short declarative lines (“48MP 4x”, “first phone to offer genlock”, “cycles deionized water”) are repeated as clipable highlights and thumbnail text.",
+      "Dual appeal: creators split content between casual, relatable benefits (wider selfie, longer battery, stabilization) and pro-oriented features (ProRes RAW, genlock, editable ISO/white balance).",
+      "Concrete stat-driven hooks: presenters call out specific numbers (battery %/mAh, RAM GB, nits, fps) and those lines are used as chapter/thumbnail hooks.",
+      "Problem + solution or trade-off framing: positive wins are paired with immediate caveats (huge ProRes files, thicker phone for bigger battery, Bluetooth issues on a unit) to make content feel practical and trustworthy.",
+      "Timestamped navigation & short-form repurposing: creators recommend exact timestamps, produce short clips for genlock/telephoto/prores to distribute on socials."
+    ],
+    "content_suggestions": [
+      "Open with a short hook mixing a camera and value judgement: lead with the telephoto line (“48MP 4x — ~100mm equivalent”) plus an immediate verdict sentence (e.g., “Worth upgrading?”) to capture both specs-hunters and upgrade undecideds.",
+      "Make three high-impact mini-demos early (within first 90 seconds): 1) 48MP 4x telephoto vs last-gen zoom frame; 2) front-camera side-by-side showing wider framing (one vs two people); 3) short ProRes RAW clip plus a quick note about file size. These mirror the most replayed moments across analyses.",
+      "When covering pro-video features, include one clear, quotable line (use the analyzed phrasing: “I can literally change ISO and white balance after I shoot”) immediately followed by a practical constraint (“but the files are huge — expect workflow and storage trade-offs”).",
+      "Make the cooling/thermal claim visual: show a labeled diagram or animation quoting “cycles deionized water between liquid and gas within a vapor chamber” and then show a short real-world sustained-performance test (gaming or export) with timestamps in the description.",
+      "Use exact numeric bullets in the description and opening on-screen cards: e.g., “+20% battery vs last year; Pro Max: >5000 mAh”, “12 GB RAM (50% ↑)”, “120 Hz & up to 3000 nits”, “4x optical / 8x crop / 18MP front”. These are the precise lines viewers look for and replay.",
+      "Address unit problems transparently: if you encounter issues (Bluetooth, thermal throttling), present symptoms briefly, note whether it’s unit-specific, and invite comments/solutions — that drives engagement as seen in the analyses."
+    ],
+    "positioning_advice": [
+      "Front-load camera and creator utility: place the telephoto + ProRes RAW + genlock content in the first third of the video so viewers searching for camera comparisons see it quickly (mirrors what replay data favored).",
+      "Create two paths inside the video: (A) quick verdict (0:00–0:45) for viewers who want a fast upgrade answer, and (B) deep-dive chapters (camera, battery/design, performance/thermals, pro features) for enthusiasts. Use chapter titles that replicate the exact quoted phrases identified in the analyses to improve search relevance.",
+      "Thumbnail strategy: use one close-up of the camera island with bold text “48MP 4x” and a smaller banner “6 MONTHS LATER” or “Worth it?”; create a secondary thumbnail specifically for creators featuring “ProRes RAW + Genlock”.",
+      "Make short social clips for the three most shareable claims: telephoto 48MP zoom demo (~20–40s), genlock claim/demo (~15s), and cooling/vapor-chamber explainer (~15s). Each should use the original quoted language to maximize rewatch/share potential.",
+      "Description & pinned comment: include 3–5 exact, timestamped lines using the analysis’ suggested phrasing (telephoto, ProRes RAW, battery stat, Bluetooth issue). Add one-line workflow notes for creators (file sizes, editing tips) to reduce friction and increase saves/comments.",
+      "End with a clear upgrade recommendation tied to viewer intent: e.g., “Buy if you want the best camera/battery now; wait if you want on-device AI or to avoid potential unit issues.” Ground this recommendation in the hardware vs software narrative highlighted across videos."
+    ],
+    "overall_summary": "Across the five analyses, camera changes (48MP telephoto, wider front camera, ProRes RAW) and a few punchy technical claims (genlock, vapor-chamber cooling, battery mAh) consistently drove rewatchable moments. For your iPhone 17 Pro review, lead with a camera-first hook using the exact, quotable lines identified (e.g., “48MP 4x”) and bundle creator-facing demos (ProRes RAW, genlock) with a short, practical caveat about workflow/file sizes. Use precise numeric stats and timestamped chapters in the description, produce three short social clips (telephoto, genlock, cooling), and include a transparent unit-issue section if relevant — this structure leverages the exact patterns viewers rewatch and engage with in the analyzed videos."
+  },
+  "debug": {
+    "analysis_mode": "fast",
+    "chunk_seconds": 20,
+    "analysis_window_chunks": 30,
+    "model": "gpt-5-mini",
+    "embedding_model": "text-embedding-3-small",
+    "reasoning_effort": "low",
+    "max_parallel_video_analyses": 3
+  }
+}

@@ -1,0 +1,55 @@
+Preprocessing Plan V1
+
+Purpose
+- Build a lightweight retrieval dataset for the rewrite module.
+- Keep only fields needed for retrieval, LLM suggestions, and downstream handoff.
+
+Final processed schema
+- video_id
+- country
+- title
+- tags
+- description
+- views
+- channel_title
+- topic_vector
+- format_vector
+- context_vector
+- style_vector
+
+Field notes
+- video_id:
+  primary key for retrieval output and downstream video analysis
+- country:
+  keep market context when combining multiple country files later
+- title + tags:
+  used to build the retrieval vectors
+- description:
+  preserved for LLM suggestion output, but not used in first-pass vector building
+- views:
+  used for final selection among already relevant results
+- channel_title:
+  kept for readability and debugging, not used in first-pass vector building
+
+Preprocessing rules
+- Read one country CSV at a time.
+- Add a country field from the filename, such as US or JP.
+- Split tags by the | separator.
+- Trim whitespace and remove empty tags.
+- Convert [none] into an empty tag list.
+- Skip rows where title is empty and tags are also empty.
+- Keep description as raw text for now.
+- Build vectors from title + tags only.
+
+Dedup rule
+- Deduplicate by video_id.
+- If the same video_id appears multiple times, keep the row with the highest views.
+
+Output format
+- Write processed rows to JSONL.
+- Keep raw Kaggle CSV files unchanged.
+
+Why this version
+- Lightweight enough for the hackathon timeline.
+- Easy to debug by opening the processed file directly.
+- Keeps a clean handoff point to the teammate module through video_id.

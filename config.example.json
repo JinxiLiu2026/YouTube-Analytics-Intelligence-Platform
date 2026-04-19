@@ -1,0 +1,26 @@
+{
+  "openai_api_key": "YOUR_OPENAI_API_KEY",
+  "openai_base_url": "https://api.openai.com/v1",
+  "openai_embedding_model": "text-embedding-3-small",
+
+  "openai_suggestion_model": "gpt-4.1-mini",
+  "openai_rewrite_model": "gpt-4.1-mini",
+
+  "youtube_insights_openai_model": "gpt-4.1-mini",
+  "youtube_insights_openai_embedding_model": "text-embedding-3-small",
+  "youtube_insights_openai_reasoning_effort": "low",
+
+  "youtube_api_key": "",
+  "analysis_mode": "fast",
+  "transcript_languages": ["en", "en-US", "en-GB"],
+  "chunk_seconds": 10,
+  "analysis_window_chunks": 30,
+  "candidate_moments_per_window": 3,
+  "top_moments_per_video": 3,
+  "max_comments_default": 40,
+  "fast_chunk_seconds": 20,
+  "fast_intro_seconds": 90,
+  "fast_relevant_chunks": 18,
+  "fast_numeric_chunks": 8,
+  "max_parallel_video_analyses": 3
+}

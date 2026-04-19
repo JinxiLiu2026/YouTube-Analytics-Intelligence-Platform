@@ -1,0 +1,396 @@
+{
+  "query": {
+    "title": "I Tried Surviving 24 Hours in Tokyo's Weirdest Capsule Hotel",
+    "description": "I booked one of the strangest capsule hotels in Tokyo and documented the full experience, from check-in to the midnight vending machine dinner.",
+    "tags": [
+      "tokyo travel",
+      "capsule hotel",
+      "japan vlog",
+      "24 hour challenge"
+    ]
+  },
+  "country": "US",
+  "retrieval": {
+    "coarse_pool_size": 1000,
+    "relevant_pool_size": 3,
+    "selected_videos": [
+      {
+        "video_id": "TkLHLsifnGQ",
+        "title": "Hello I went to Japan",
+        "channel_title": "RTGame",
+        "views": 327865,
+        "score": {
+          "topic": 0.7079600095748901,
+          "format": 0.7100093960762024,
+          "context": 0.6609178781509399,
+          "style": 0.604729175567627,
+          "total": 0.681124746799469
+        }
+      },
+      {
+        "video_id": "wKmf4DvJuhI",
+        "title": "A low day in my homeless van life in Japan",
+        "channel_title": "Nomad Push",
+        "views": 81107,
+        "score": {
+          "topic": 0.6609662771224976,
+          "format": 0.6764798760414124,
+          "context": 0.6189430952072144,
+          "style": 0.6117852926254272,
+          "total": 0.6461859941482544
+        }
+      },
+      {
+        "video_id": "6o3buTHqZQQ",
+        "title": "Slow Week at Home Cleaning My Old Japanese House",
+        "channel_title": "silvie the queen",
+        "views": 69579,
+        "score": {
+          "topic": 0.6945935487747192,
+          "format": 0.7083407640457153,
+          "context": 0.6291085481643677,
+          "style": 0.6122028827667236,
+          "total": 0.6686131358146667
+        }
+      }
+    ]
+  },
+  "insight_analysis": {
+    "description": "Title: I Tried Surviving 24 Hours in Tokyo's Weirdest Capsule Hotel\nDescription: I booked one of the strangest capsule hotels in Tokyo and documented the full experience, from check-in to the midnight vending machine dinner.\nTags: tokyo travel, capsule hotel, japan vlog, 24 hour challenge",
+    "videos": [
+      {
+        "video_id": "TkLHLsifnGQ",
+        "title": null,
+        "channel_title": null,
+        "stats": {
+          "view_count": null,
+          "like_count": null,
+          "comment_count": null
+        },
+        "transcript_found": true,
+        "warnings": [
+          "Running in transcript-only mode because YOUTUBE_API_KEY is not set."
+        ],
+        "highlight_moments": [
+          {
+            "start": 75.0,
+            "end": 95.0,
+            "headline": "Winning a lottery at the maid cafe and fun photo moment",
+            "rationale": "The creator experiences a unique and memorable event (winning a lottery) in an unusual setting (maid cafe), creating humorous and cute content that is likely entertaining and rewatchable.",
+            "supporting_evidence": [
+              "We actually won a lottery in the maid cafe.",
+              "This photo now exists. We so kawaii."
+            ],
+            "confidence": 0.9,
+            "related_user_goal": "Showcase unique odd experiences in Tokyo capsule hotel vlog"
+          },
+          {
+            "start": 470.0,
+            "end": 500.0,
+            "headline": "Mission to save Pom Pom Purin merch and travel with big plush",
+            "rationale": "This segment describes a quirky and humorous mission involving saving a character's merch and the resulting oversized plush mascot travel companion, adds novelty and comedy, likely engaging viewers emotionally and making it memorable.",
+            "supporting_evidence": [
+              "The Pom Pom Perin cafe in Harajuku was closing down.",
+              "We made it our mission on a trip to attempt to save Pom Pom Perin.",
+              "We then have to travel with this massive PMP pom pin plush with us for the rest of the trip."
+            ],
+            "confidence": 0.85,
+            "related_user_goal": "Highlight strange and funny travel challenges in Japan"
+          },
+          {
+            "start": 1300.0,
+            "end": 1380.0,
+            "headline": "Reflecting on early Japan videos and personal growth",
+            "rationale": "The creator shares a personal and heartfelt reflection on past struggles with confidence making Japan videos, showing vulnerability and growth, adding emotional depth and relatability, making this moment strategically valuable for audience connection.",
+            "supporting_evidence": [
+              "I actually tried to make a number of videos when I was living in Japan in 2018 ... I just wasn't really able for it.",
+              "Ever since I started doing variety content ... it's something I actually always wanted to do."
+            ],
+            "confidence": 0.8,
+            "related_user_goal": "Create personal connection and deeper narrative in Japan travel vlog"
+          }
+        ],
+        "creator_takeaways": [
+          "Include the humorous and cute moment of winning a lottery at the maid cafe as a highlight to showcase the unique, quirky experiences from the trip that viewers will find entertaining and memorable.",
+          "Feature the quirky mission to save Pom Pom Purin merchandise and the challenge of traveling with a giant plush toy to add novelty and comedy, enhancing viewer engagement by showing travel challenges beyond typical sightseeing.",
+          "Incorporate a personal reflection segment on the creator's past struggles and growth in making Japan videos, fostering audience empathy and deepening connection by sharing vulnerability and the creator's long-term passion for this content style."
+        ],
+        "comments_considered": [],
+        "transcript_chunks_analyzed": 24
+      },
+      {
+        "video_id": "wKmf4DvJuhI",
+        "title": null,
+        "channel_title": null,
+        "stats": {
+          "view_count": null,
+          "like_count": null,
+          "comment_count": null
+        },
+        "transcript_found": true,
+        "warnings": [
+          "Running in transcript-only mode because YOUTUBE_API_KEY is not set."
+        ],
+        "highlight_moments": [
+          {
+            "start": 60.0,
+            "end": 100.0,
+            "headline": "Struggle to find accessible toilets while camping",
+            "rationale": "This moment shows a genuine and relatable challenge during the 24-hour survival experience—difficulty accessing toilets in an underground parking lot. It adds tension and realism that viewers will remember and engage with.",
+            "supporting_evidence": [
+              "Oh man, I cannot use the toilet. No more. I think I got to go outside. That sucks.",
+              "I thought this parking space is good because there was toilet really nearby, but it wasn't open the whole time.",
+              "I end up walking like what? 6 minutes. 6 minutes. 7 minutes just to pe"
+            ],
+            "confidence": 0.9,
+            "related_user_goal": "Highlight unusual or tough moments in 24 hour survival experience"
+          },
+          {
+            "start": 1100.0,
+            "end": 1160.0,
+            "headline": "Deciding to sleep in the van after drinking, despite toilet concerns",
+            "rationale": "The speaker shares a humorous but realistic moment where he can't drive after drinking and decides to sleep in the van, worrying about distant toilets. This blends vulnerability and humor well, making the survival challenge more authentic and engaging.",
+            "supporting_evidence": [
+              "I already drank so I cannot drive the car. I got to sleep where the car is.",
+              "But the problem is, is there a toilet nearby? Yeah, that's the problem. I don't think there is."
+            ],
+            "confidence": 0.85,
+            "related_user_goal": "Show authentic and relatable challenges during 24 hour survival"
+          },
+          {
+            "start": 480.0,
+            "end": 500.0,
+            "headline": "Observing the cost of Japanese fast food",
+            "rationale": "The speaker points out that Japanese KFC prices seem expensive (~$10-$11 for a meal). This concrete cultural insight about food costs adds useful context and interest for viewers curious about everyday life in Tokyo.",
+            "supporting_evidence": [
+              "Japanese KFC is expensive though.",
+              "So this is three piece chicken with fries and drink and it's about like 10 bucks or 11 bucks."
+            ],
+            "confidence": 0.7,
+            "related_user_goal": "Show cultural and cost aspects of Tokyo life"
+          }
+        ],
+        "creator_takeaways": [
+          "Feature the real, day-to-day challenges of surviving in unconventional places like an underground parking lot, especially focusing on basic needs such as access to toilets, to engage viewers with authentic struggle and humor.",
+          "Highlight moments that blend humor and vulnerability, like deciding to sleep in the van after drinking and worrying about toilet access, to create emotional peaks and relatable content.",
+          "Include concrete cultural observations, such as local food prices, to enrich the travel narrative and provide viewers with practical, relatable details about Tokyo life."
+        ],
+        "comments_considered": [],
+        "transcript_chunks_analyzed": 27
+      },
+      {
+        "video_id": "6o3buTHqZQQ",
+        "title": null,
+        "channel_title": null,
+        "stats": {
+          "view_count": null,
+          "like_count": null,
+          "comment_count": null
+        },
+        "transcript_found": true,
+        "warnings": [
+          "Running in transcript-only mode because YOUTUBE_API_KEY is not set."
+        ],
+        "highlight_moments": [
+          {
+            "start": 160.0,
+            "end": 180.0,
+            "headline": "Creating Ghibli-inspired lanterns as a unique room project",
+            "rationale": "This moment highlights a creative and thematic enhancement to the hotel stay, connecting with fans of Studio Ghibli and showing a personal touch that makes the capsule hotel experience distinctive.",
+            "supporting_evidence": [
+              "I'm actually going to make some lanterns.",
+              "I want the theme to be Jibli inspired.",
+              "I'm going to glue the origami paper on top of it."
+            ],
+            "confidence": 0.9,
+            "related_user_goal": "Highlight unique, creative experiences within the hotel stay or their environment."
+          },
+          {
+            "start": 860.0,
+            "end": 880.0,
+            "headline": "Showing custom birthday nails before going to sleep",
+            "rationale": "Sharing this personal detail adds emotional depth and a visually appealing moment, enhancing viewer connection and making the vlog feel more intimate and engaging.",
+            "supporting_evidence": [
+              "I want to show you my nails.",
+              "My friend made me these custom nails.",
+              "I'm going to wear them for my birthday."
+            ],
+            "confidence": 0.85,
+            "related_user_goal": "Include personal and visually appealing details to engage viewers."
+          },
+          {
+            "start": 940.0,
+            "end": 960.0,
+            "headline": "Encountering and naming a cute jumping spider companion",
+            "rationale": "This unexpected and quirky moment with a jumping spider named Tachiko adds charm and humor to the video, making the content more memorable and shareable for viewers.",
+            "supporting_evidence": [
+              "A little jumping spider came up to me and it was just sitting there with me.",
+              "I'm going to call it Tachiko.",
+              "Short for Tachikoma, a robot jumping spider in Ghost in the Shell."
+            ],
+            "confidence": 0.85,
+            "related_user_goal": "Add quirky and surprising moments to increase engagement and memorability."
+          }
+        ],
+        "creator_takeaways": [
+          "Feature creative room customizations like the Studio Ghibli-inspired lantern project to demonstrate the unique and personal aspects of the capsule hotel experience.",
+          "Include intimate and visually impactful personal moments such as showcasing custom birthday nails to build a closer connection with viewers.",
+          "Highlight quirky, spontaneous interactions—like naming the jumping spider Tachiko—to infuse humor and surprise, making the video more engaging and memorable."
+        ],
+        "comments_considered": [],
+        "transcript_chunks_analyzed": 25
+      }
+    ],
+    "cross_video_summary": {
+      "recurring_patterns": [
+        "Highlighting quirky and unusual experiences to create memorable and entertaining moments.",
+        "Incorporating personal reflections and vulnerabilities to deepen audience connection.",
+        "Blending humor with relatable struggles during unconventional survival or travel challenges.",
+        "Including creative, thematic, or personal touches within the hotel or travel environment.",
+        "Showcasing concrete local cultural details to enrich viewer understanding of the setting."
+      ],
+      "content_suggestions": [
+        "Feature a unique, humorous event inside the capsule hotel to stand out, such as a funny or odd interaction with hotel staff or unusual facilities.",
+        "Add a segment with a personal reflection on how staying in the unconventional capsule hotel impacted you emotionally or changed your perspective.",
+        "Show genuine challenges faced during the 24-hour experience in the capsule hotel (e.g., difficulty sleeping, cramped space issues) to create relatable tension and humor.",
+        "Incorporate a creative or decorative project or element related to the hotel stay to emphasize uniqueness and personal engagement.",
+        "Include observations about local culture or food costs related to capsule hotel amenities or vicinity to add practical and interesting context."
+      ],
+      "positioning_advice": [
+        "Place the quirky or humorous unique hotel experience early in the video to hook viewers with memorable content.",
+        "Use personal reflections toward the middle or end to build an emotional connect after establishing the setting and events.",
+        "Insert moments of authentic struggle or challenges naturally after lighter fun moments to maintain engagement with varied pacing.",
+        "Show creative personal touches or projects during a slower or downtime portion of the video to retain interest.",
+        "Integrate cultural observations during or just after scenes involving food, vending machines, or local surroundings for natural flow."
+      ],
+      "grounded_suggestions": [
+        {
+          "tip": "Include a funny or unexpected event inside the capsule hotel to create a memorable highlight.",
+          "supporting_pattern": "In one video, the creator included a quirky mission involving traveling with a giant plush, adding novelty and comedy that engaged viewers."
+        },
+        {
+          "tip": "Share a sincere personal reflection about your experience with the hotel to build viewer empathy.",
+          "supporting_pattern": "A creator shared their past struggles and growth making Japan videos, adding emotional depth and relatability."
+        },
+        {
+          "tip": "Show real challenges like cramped space or limited facilities humorously to create authentic tension.",
+          "supporting_pattern": "One video portrayed genuine struggles finding accessible toilets during a 24-hour survival, engaging viewers with authenticity and humor."
+        },
+        {
+          "tip": "Add a creative or thematic DIY or decoration project related to the hotel stay to add uniqueness.",
+          "supporting_pattern": "A creator made Ghibli-inspired lanterns in their room, demonstrating a unique and personal aspect of their hotel experience."
+        },
+        {
+          "tip": "Point out concrete local cultural or cost details related to your stay to enrich context.",
+          "supporting_pattern": "An observation about Japanese fast food prices was included to provide viewers interesting practical insights about local life."
+        }
+      ],
+      "overall_summary": "The analyzed videos consistently leverage quirky and personal travel moments combined with genuine struggles and cultural insights to create engaging, relatable, and memorable content. To strengthen your Tokyo capsule hotel video, blend humor and vulnerability by showcasing unique moments inside the hotel, authentic challenges faced during the stay, creative personal touches, and contextual local observations. Position these elements carefully for pacing and emotional connection, such as opening with an unusual or funny event, following with authentic struggles, and including personal reflection before closing to leave a lasting impression."
+    },
+    "debug": {
+      "analysis_mode": "fast",
+      "chunk_seconds": 20,
+      "analysis_window_chunks": 30,
+      "model": "gpt-4.1-mini",
+      "embedding_model": "text-embedding-3-small",
+      "reasoning_effort": "low",
+      "max_parallel_video_analyses": 3
+    }
+  },
+  "frontend_payload": {
+    "query": {
+      "title": "I Tried Surviving 24 Hours in Tokyo's Weirdest Capsule Hotel",
+      "description": "I booked one of the strangest capsule hotels in Tokyo and documented the full experience, from check-in to the midnight vending machine dinner.",
+      "tags": [
+        "tokyo travel",
+        "capsule hotel",
+        "japan vlog",
+        "24 hour challenge"
+      ]
+    },
+    "country": "US",
+    "modules": {
+      "metadata_rewrite": {
+        "suggested_title": "Surviving 24 Hours in Tokyo’s Weirdest Capsule Hotel Challenge / 24 Hours Inside Tokyo’s Strangest Capsule Hotel Experience / I Spent a Night in Tokyo’s Most Unusual Capsule Hotel",
+        "suggested_tags": [
+          "tokyo travel",
+          "capsule hotel",
+          "japan vlog",
+          "24 hour challenge",
+          "tokyo capsule hotel",
+          "japan travel vlog",
+          "unique hotels japan",
+          "travel japan 2024",
+          "japan overnight stay",
+          "capsule hotel experience"
+        ],
+        "suggested_description": "I stayed overnight in one of Tokyo’s strangest capsule hotels, capturing everything from the quirky check-in to a midnight vending machine dinner. Join me as I explore this unique lodging experience and share honest m...",
+        "why_this_suggestion": "This rewrite is based on the matched videos \"Hello I went to Japan\" and \"A low day in my homeless van life in Japan\". Refine the title to emphasize the unique capsule hotel experience and a 24-hour challenge angle. Expand the description to highlight key moments an Incorporate '24 Hour Challenge' or 'Weirdest Capsule Hotel' explicitly to match trends seen in Reference 1's 'japan vlog' and emphasize the unique Make the title more concise and curiosity-driven, similar to the directness of Reference 3's 'Slow Week at Home Cleaning My Old Japanese House' to.",
+        "model": "gpt-4.1-mini",
+        "llm_enabled": true
+      },
+      "creation_tips": {
+        "intro": "These tips are grounded in repeated patterns from the matched videos.",
+        "tips": [
+          {
+            "tip": "Include a funny or unexpected event inside the capsule hotel to create a memorable highlight.",
+            "based_on": "In one video, the creator included a quirky mission involving traveling with a giant plush, adding novelty and comedy that engaged viewers."
+          },
+          {
+            "tip": "Share a sincere personal reflection about your experience with the hotel to build viewer empathy.",
+            "based_on": "A creator shared their past struggles and growth making Japan videos, adding emotional depth and relatability."
+          },
+          {
+            "tip": "Show real challenges like cramped space or limited facilities humorously to create authentic tension.",
+            "based_on": "One video portrayed genuine struggles finding accessible toilets during a 24-hour survival, engaging viewers with authenticity and humor."
+          },
+          {
+            "tip": "Add a creative or thematic DIY or decoration project related to the hotel stay to add uniqueness.",
+            "based_on": "A creator made Ghibli-inspired lanterns in their room, demonstrating a unique and personal aspect of their hotel experience."
+          },
+          {
+            "tip": "Point out concrete local cultural or cost details related to your stay to enrich context.",
+            "based_on": "An observation about Japanese fast food prices was included to provide viewers interesting practical insights about local life."
+          }
+        ]
+      },
+      "matched_videos": [
+        {
+          "video_id": "TkLHLsifnGQ",
+          "title": "Hello I went to Japan",
+          "url": "https://www.youtube.com/watch?v=TkLHLsifnGQ",
+          "channel_title": "RTGame",
+          "views": 327865,
+          "similarity_score": 0.6811,
+          "key_summary": "Feature the quirky mission to save Pom Pom Purin merchandise and the challenge of traveling with a giant plush toy to add novelty and comedy, enhan...",
+          "key_takeaways": "Include the humorous and cute moment of winning a lottery at the maid cafe as a highlight to showcase the unique, quirky experiences from the trip that viewers will fi..."
+        },
+        {
+          "video_id": "wKmf4DvJuhI",
+          "title": "A low day in my homeless van life in Japan",
+          "url": "https://www.youtube.com/watch?v=wKmf4DvJuhI",
+          "channel_title": "Nomad Push",
+          "views": 81107,
+          "similarity_score": 0.6462,
+          "key_summary": "Highlight moments that blend humor and vulnerability, like deciding to sleep in the van after drinking and worrying about toilet access, to create...",
+          "key_takeaways": "Feature the real, day-to-day challenges of surviving in unconventional places like an underground parking lot, especially focusing on basic needs such as access to toi..."
+        },
+        {
+          "video_id": "6o3buTHqZQQ",
+          "title": "Slow Week at Home Cleaning My Old Japanese House",
+          "url": "https://www.youtube.com/watch?v=6o3buTHqZQQ",
+          "channel_title": "silvie the queen",
+          "views": 69579,
+          "similarity_score": 0.6686,
+          "key_summary": "Include intimate and visually impactful personal moments such as showcasing custom birthday nails to build a closer connection with viewers.",
+          "key_takeaways": "Feature creative room customizations like the Studio Ghibli-inspired lantern project to demonstrate the unique and personal aspects of the capsule hotel experience."
+        }
+      ]
+    },
+    "meta": {
+      "coarse_pool_size": 1000,
+      "relevant_pool_size": 3,
+      "selected_video_count": 3
+    }
+  }
+}

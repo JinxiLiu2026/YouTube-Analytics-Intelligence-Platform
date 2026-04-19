@@ -1,0 +1,41 @@
+Trend Rewrite - Retrieval Plan V1
+
+Goal:
+Use a simple first-pass retrieval flow that is easy to explain and debug.
+
+Chosen logic:
+1. User inputs title, description, and tags.
+2. The system matches user tags against dataset tags first.
+3. Videos with stronger tag overlap are ranked higher.
+4. Within those tag-matched candidates, the system compares title + description text similarity.
+5. A relevance score is calculated:
+   final_score = 0.65 * tag_score + 0.35 * text_score
+6. The system keeps a high-relevance candidate pool:
+   top 5% by final_score, capped at 50 items and never smaller than top_k.
+7. Final output returns the 5 highest-view videos from that candidate pool.
+
+Relevance scoring:
+- tag_score: 65%
+- text_score: 35%
+
+Current definitions:
+- tag_score:
+  Compare normalized user tags with normalized dataset tags.
+  Exact tag matches score highest.
+  Partial token overlap inside tags gives partial credit.
+
+- text_score:
+  Compare title + description only.
+  Comments are not used.
+  Tags are not mixed into the text similarity score.
+
+Why this version:
+- Prevents obvious false matches caused by one shared word in the title.
+- Keeps the system simple enough for a hackathon MVP.
+- Easy to explain: "first find the same topic, then find the most similar wording."
+- Ensures final references are not just relevant, but also actually popular enough to learn from.
+
+Future upgrades:
+- Replace text similarity with embeddings.
+- Add category or popularity as a small reranking bonus.
+- Use LLM after retrieval to generate rewrite suggestions.

@@ -1,0 +1,31 @@
+项目简介简短版
+
+我们做的是一个帮助 YouTube 创作者优化视频方向和 metadata 的工具。
+
+用户可以输入：
+
+1. 自己已有的视频 title / tags / description
+2. 或者只是一个粗略的视频 idea
+
+系统会先在 YouTube Trending 数据库里匹配相似题材的视频，
+然后基于这些参考视频，输出三部分结果：
+
+1. Video Title, Tags & Description
+   - 给出标题、标签、简介的修改建议
+
+2. Creation Tips
+   - 给出视频内容和创作方向上的建议
+
+3. Matched Videos
+   - 展示真正匹配到的参考视频，以及它们的 views 和 similarity score
+
+我们的亮点是：
+
+1. 建议不是纯粹由 AI 凭空生成
+2. 系统会先从真实数据里找相似视频
+3. 再把这些视频作为依据来生成更 grounded 的建议
+
+简单来说：
+
+这是一个把“相似视频检索 + 视频内容分析 + AI 建议生成”结合起来的创作者辅助工具。
+

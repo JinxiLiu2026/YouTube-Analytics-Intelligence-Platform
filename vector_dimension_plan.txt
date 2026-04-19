@@ -1,0 +1,338 @@
+Vector Dimension Plan
+
+Purpose
+Record the current direction for a vector-based similarity system that focuses on
+video importance and matching quality.
+
+Current scope
+- Use title + tags as the input signal.
+- Do not use description in the first version.
+- Do not finalize topic yet, because topic is the hardest dimension to define.
+- First lock down three softer dimensions:
+  - format
+  - context
+  - style
+
+
+1. Dimension prototypes
+
+These vectors are not treated as perfect truths. They are semantic anchor points.
+Each prototype vector is built by averaging the embeddings of a small seed set.
+
+1.1 Format seeds
+- vlog
+- reaction
+- review
+- interview
+- breakdown
+- challenge
+- tutorial
+- livestream
+- highlights
+- performance
+
+Definition:
+format prototype should capture the presentation form of the video.
+
+Vector:
+p_format = mean(emb(seed) for seed in format_seeds)
+
+
+1.2 Context seeds
+- location
+- city
+- country
+- place
+- setting
+- environment
+- background
+- world
+- scene
+- franchise
+
+Definition:
+context prototype should capture place, setting, world, or situational background.
+
+Vector:
+p_context = mean(emb(seed) for seed in context_seeds)
+
+
+1.3 Style seeds
+- dramatic
+- funny
+- weird
+- shocking
+- intense
+- emotional
+- exclusive
+- official
+- epic
+- chaotic
+
+Definition:
+style prototype should capture expressive tone, hook, emotional pull, or wording style.
+
+Vector:
+p_style = mean(emb(seed) for seed in style_seeds)
+
+
+2. Input representation
+
+Each video is represented by a set of phrase units:
+- title phrases
+- full tags
+
+Each phrase/unit is embedded as a vector e_i in R^d.
+
+Example:
+- "tokyo"
+- "capsule hotel"
+- "japan vlog"
+- "24 hour challenge"
+
+
+3. Per-unit dimension relevance
+
+For each phrase/unit x_i with embedding e_i, compute its similarity to each dimension
+prototype.
+
+Example with cosine similarity:
+- s_i^format  = cos(e_i, p_format)
+- s_i^context = cos(e_i, p_context)
+- s_i^style   = cos(e_i, p_style)
+
+If topic is introduced later, it will follow the same structure.
+
+Interpretation:
+These raw scores do not replace the phrase meaning. They only describe how strongly
+the phrase leans toward each dimension.
+
+
+4. First normalization: per-unit normalization
+
+Each phrase/unit should have a fixed total contribution across dimensions.
+
+For the current three-dimension version:
+
+Z_i = s_i^format + s_i^context + s_i^style
+
+w_i^format  = s_i^format  / Z_i
+w_i^context = s_i^context / Z_i
+w_i^style   = s_i^style   / Z_i
+
+This means:
+w_i^format + w_i^context + w_i^style = 1
+
+If topic is added later, the same normalization expands to four dimensions.
+
+
+5. Weighted phrase contribution
+
+Each phrase keeps its own semantic identity by contributing its own embedding vector
+to each dimension, scaled by that dimension's weight.
+
+Example:
+- format contribution  from phrase i = w_i^format  * e_i
+- context contribution from phrase i = w_i^context * e_i
+- style contribution   from phrase i = w_i^style   * e_i
+
+Important:
+The score is only the weight. The actual content still comes from the original
+phrase embedding.
+
+
+6. Video-level aggregation
+
+For each dimension, combine the weighted phrase vectors using a weighted average,
+not a raw sum.
+
+Format dimension:
+v_format = (Σ_i w_i^format * e_i) / (Σ_i w_i^format)
+
+Context dimension:
+v_context = (Σ_i w_i^context * e_i) / (Σ_i w_i^context)
+
+Style dimension:
+v_style = (Σ_i w_i^style * e_i) / (Σ_i w_i^style)
+
+Reason:
+This avoids longer videos or videos with more tags automatically producing larger
+vectors just because they contain more phrase units.
+
+
+7. Second normalization: video-level normalization
+
+After aggregation, normalize each dimension vector again.
+
+u_format  = v_format  / ||v_format||
+u_context = v_context / ||v_context||
+u_style   = v_style   / ||v_style||
+
+Reason:
+This makes downstream similarity comparisons depend more on vector direction than
+raw magnitude.
+
+
+8. Video-to-video similarity
+
+For two videos A and B, compare each dimension separately:
+
+sim_format  = cos(u_format^A,  u_format^B)
+sim_context = cos(u_context^A, u_context^B)
+sim_style   = cos(u_style^A,   u_style^B)
+
+Then combine them into one final similarity score:
+
+sim_total = alpha * sim_format + beta * sim_context + gamma * sim_style
+
+Where:
+- alpha + beta + gamma = 1
+
+A possible first version:
+- alpha = 0.35
+- beta = 0.40
+- gamma = 0.25
+
+This would emphasize context slightly more than the others in the current
+topic-less version.
+
+
+9. Topic note
+
+Topic is intentionally not finalized yet.
+
+Why:
+- topic is the hardest semantic dimension to define with one clean prototype
+- topic depends heavily on specific named entities and concrete objects
+- rushing topic design now would likely create a weak or misleading system
+
+The current plan is:
+- first stabilize format/context/style
+- later decide whether topic should come from:
+  - a dedicated prototype family
+  - phrase clustering
+  - a different retrieval layer
+
+
+10. Practical meaning
+
+This system does not force hard classification.
+A phrase can partially belong to several dimensions.
+
+
+11. Retrieval pipeline for the real dataset
+
+The retrieval pipeline should use two different filters.
+The first filter is for speed and rough recall.
+The second filter is for quality and final selection.
+
+11.1 Stage 1: topic-only coarse filter
+
+Purpose:
+- remove obviously unrelated videos early
+- keep enough candidates so true matches are not missed
+
+Logic:
+- build a topic vector for the user input
+- compare it against the precomputed topic vector of each dataset video
+- rank by topic similarity only
+- keep a coarse candidate pool
+
+Suggested first version:
+- keep topic top 10 percent
+- or top 1000
+- use whichever is smaller
+
+Important:
+- do not use views here
+- do not use format/context/style here
+- this stage is only for rough recall
+
+
+11.2 Stage 2: full similarity rerank
+
+Purpose:
+- decide which videos are truly useful references
+
+Logic:
+- for each stage-1 candidate, compute full similarity using:
+  - topic
+  - format
+  - context
+  - style
+- rank candidates by final similarity
+
+Formula:
+final_similarity =
+0.40 * sim_topic +
+0.20 * sim_format +
+0.25 * sim_context +
+0.15 * sim_style
+
+
+11.3 Relevance gate before popularity
+
+Views should only be used after relevance is already good enough.
+
+Logic:
+- take the stage-2 ranked candidates
+- keep only candidates that pass both:
+  - an absolute similarity threshold
+  - a relative threshold compared with the best match
+
+Example:
+- final_similarity >= absolute_threshold
+- final_similarity >= best_final_similarity * relative_ratio
+
+Suggested first version:
+- absolute_threshold = 0.60
+- relative_ratio = 0.85
+
+
+11.4 Final output
+
+After the relevance gate:
+- sort remaining candidates by views
+- return the top 5
+
+Reason:
+- similarity decides whether a video is worth referencing
+- views decides which relevant videos are most worth learning from
+
+
+11.5 Edge case policy
+
+Relevance is more important than forcing 5 outputs.
+
+Policy:
+- if 3 or more videos pass, return the normal top 5 by views
+- if 1 or 2 videos pass, return them and mark that strong references are limited
+- if 0 videos pass, return no reference videos
+
+If no videos pass:
+- do not force weak matches into the result
+- the product can still give generic rewrite advice without reference videos
+
+Example:
+- "tokyo" should lean strongly to context
+- "vlog" should lean strongly to format
+- "weirdest" should lean strongly to style
+
+Because the phrase embedding itself is preserved, the system keeps both:
+- which dimension the phrase belongs to
+- what the phrase specifically means
+
+
+11. Summary
+
+The current mathematical plan is:
+
+1. Build prototype vectors for format, context, and style from seed words.
+2. Represent title phrases and full tags as phrase embeddings.
+3. Measure each phrase against the dimension prototypes.
+4. Normalize those relevance scores per phrase.
+5. Use those normalized weights to distribute each phrase embedding into
+   different dimension buckets.
+6. Aggregate each bucket with a weighted average.
+7. Normalize each bucket vector.
+8. Compare videos dimension by dimension and combine the scores.

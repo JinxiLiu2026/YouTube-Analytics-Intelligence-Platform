@@ -1,0 +1,377 @@
+Vector Matrix Math Notes
+
+Purpose
+- Record the current matrix-based vector construction used in preprocessing.
+- Explain the meaning of each matrix step in plain language.
+- Clarify why we do weighted averaging first, and then L2 normalization.
+
+
+1. Input unit: phrase
+
+In this project, the basic semantic unit is not a single token.
+It is a phrase.
+
+Current phrase rule:
+- the whole title is one phrase
+- each full tag is one phrase
+
+Example:
+- title:
+  "24 Hours in Tokyo's Weirdest Capsule Hotel Vlog"
+- tags:
+  "tokyo travel"
+  "capsule hotel"
+  "japan vlog"
+
+Then the phrase list is:
+- "24 Hours in Tokyo's Weirdest Capsule Hotel Vlog"
+- "tokyo travel"
+- "capsule hotel"
+- "japan vlog"
+
+Why phrase instead of token:
+- a token is often too small and ambiguous
+- a full tag usually carries clearer meaning
+- this also reduces unnecessary fragmentation
+
+
+2. Phrase embedding matrix
+
+Suppose one video has n phrases.
+Suppose each embedding has dimension d.
+
+We embed every phrase and stack the vectors row by row:
+
+P in R^(n x d)
+
+Interpretation:
+- n = number of phrases in this video
+- d = embedding dimension, such as 1536
+- row i of P = embedding of phrase i
+
+So P is the phrase embedding matrix for one video.
+
+
+3. Prototype matrix
+
+We currently use three semantic routing dimensions:
+- format
+- context
+- style
+
+Each dimension has one prototype vector.
+We stack them into one matrix:
+
+Q in R^(3 x d)
+
+Interpretation:
+- row 0 = format prototype
+- row 1 = context prototype
+- row 2 = style prototype
+
+The topic vector is handled separately and is not included in Q.
+
+
+4. Relevance score matrix
+
+We compute:
+
+S = P @ Q^T
+
+Shape:
+- P is (n x d)
+- Q^T is (d x 3)
+- so S is (n x 3)
+
+Meaning:
+- each row of S corresponds to one phrase
+- each column of S corresponds to one dimension
+
+So:
+- S[i, 0] = how much phrase i leans toward format
+- S[i, 1] = how much phrase i leans toward context
+- S[i, 2] = how much phrase i leans toward style
+
+In the current implementation, negative scores are clipped:
+
+S = max(S, 0)
+
+Why:
+- if a phrase is clearly not relevant to a dimension, we do not want a strong negative routing weight
+- this keeps the routing easier to interpret
+
+
+5. Softmax over dimensions
+
+For each phrase, we want to distribute its contribution across:
+- format
+- context
+- style
+
+So we apply softmax row-wise:
+
+W = softmax(S, axis=1)
+
+Shape:
+- W is still (n x 3)
+
+Meaning:
+- row i of W contains the dimension weights for phrase i
+- each row sums to 1
+
+Example:
+- one phrase might become:
+  [0.20, 0.65, 0.15]
+
+Interpretation:
+- that phrase mostly belongs to context
+- but still contributes a bit to format and style
+
+Important:
+- softmax is across the 3 dimensions for each phrase
+- not across all phrases
+
+Why:
+- we want each phrase to decide how it splits itself across dimensions
+- we do not want phrases competing globally with one another here
+
+
+6. Source weight: title vs tags
+
+Not all phrases are treated equally.
+The title is given more importance than each tag.
+
+Current rule:
+- title phrase weight = 2.0
+- each tag phrase weight = 1.0
+
+We define a source-weight vector:
+
+a in R^(n,)
+
+Example:
+- if phrase 0 is the title and the rest are tags:
+  a = [2.0, 1.0, 1.0, 1.0, ...]
+
+Then we multiply it into W:
+
+W' = W * a[:, None]
+
+Shape:
+- W' is still (n x 3)
+
+Meaning:
+- each phrase still has a distribution across the 3 dimensions
+- but title contributions are amplified relative to tag contributions
+
+
+7. Dimension aggregation
+
+Now we aggregate phrases into three dimension vectors.
+
+First compute the weighted sum:
+
+R_sum = (W')^T @ P
+
+Shape:
+- (W')^T is (3 x n)
+- P is (n x d)
+- so R_sum is (3 x d)
+
+Meaning:
+- row 0 of R_sum = weighted sum for format
+- row 1 of R_sum = weighted sum for context
+- row 2 of R_sum = weighted sum for style
+
+
+8. Why divide by the weight sum
+
+If we stop at R_sum, then videos with more phrases often get larger vectors.
+That is not what we want.
+
+We want a weighted average, not just a weighted sum.
+
+So we compute:
+
+z = sum(W', axis=0)
+
+Shape:
+- z is (3,)
+
+Interpretation:
+- z[0] = total effective weight contributing to format
+- z[1] = total effective weight contributing to context
+- z[2] = total effective weight contributing to style
+
+Then:
+
+R = R_sum / z[:, None]
+
+Shape:
+- R is (3 x d)
+
+Meaning:
+- each row is now the weighted average vector for one dimension
+- not the raw sum
+
+Why this matters:
+- a video with many tags should not automatically get a larger vector just because it has more phrases
+- dividing by z removes that size effect
+- this makes the representation depend more on average semantic direction than on phrase count
+
+Simple intuition:
+- without dividing by z, "more phrases" behaves like "stronger signal"
+- with dividing by z, we get "average semantic signal"
+
+
+9. Why normalize again after averaging
+
+After weighted averaging, we still do:
+
+R_norm[k] = R[k] / ||R[k]||
+
+This is L2 normalization on each dimension vector.
+
+Why do this if we already averaged?
+
+Because averaging and normalization solve different problems.
+
+Weighted average solves:
+- phrase count differences
+- weight total differences
+- the problem of raw accumulation
+
+L2 normalization solves:
+- remaining length differences after averaging
+- makes later similarity comparisons focus on direction instead of magnitude
+
+Important distinction:
+- dividing by z gives an average
+- dividing by ||R[k]|| gives a unit vector
+
+They are not the same operation.
+
+Why length can still differ after averaging:
+- some videos have very coherent phrases pointing in similar directions
+- some videos have more mixed phrases that partially cancel out
+- even after averaging, vector lengths can still vary
+
+Why normalize:
+- later similarity uses cosine-style comparison
+- cosine works best when we care about direction
+- unit vectors are also easier to reason about in debugging
+
+So the full idea is:
+- first remove "how many phrases" effects
+- then remove "how long is this average vector" effects
+- keep mainly the semantic direction
+
+
+10. Topic vector
+
+Topic is handled separately from format/context/style.
+
+Current rule:
+- take the mean of all phrase embeddings
+- then L2 normalize
+
+Formula:
+
+topic = mean(P, axis=0)
+topic = topic / ||topic||
+
+Why this simpler rule is acceptable:
+- topic is meant to capture broad content identity
+- we do not currently route topic through prototypes
+- we want topic to include all phrase information more evenly
+
+
+11. Final output per video
+
+For one video, the preprocessing step outputs:
+- topic_vector
+- format_vector
+- context_vector
+- style_vector
+
+All of them are normalized vectors.
+
+
+12. Later video-to-video similarity
+
+When comparing two videos A and B, we compute:
+- sim_topic
+- sim_format
+- sim_context
+- sim_style
+
+And combine them with the current weighted formula:
+
+final_similarity =
+0.40 * sim_topic +
+0.20 * sim_format +
+0.25 * sim_context +
+0.15 * sim_style
+
+This formula is not part of preprocessing itself, but it is the reason we want
+the four vectors to be stable and comparable.
+
+
+13. Full matrix pipeline summary
+
+For one video:
+
+1. Build phrases:
+- title as one phrase
+- each tag as one phrase
+
+2. Embed phrases:
+- build P in R^(n x d)
+
+3. Build prototype matrix:
+- build Q in R^(3 x d)
+
+4. Score phrase-to-dimension relevance:
+- S = P @ Q^T
+
+5. Convert relevance scores into routing weights:
+- W = softmax(S, axis=1)
+
+6. Apply source weight:
+- W' = W * a[:, None]
+
+7. Aggregate weighted sums:
+- R_sum = (W')^T @ P
+
+8. Convert sums into weighted averages:
+- z = sum(W', axis=0)
+- R = R_sum / z[:, None]
+
+9. L2 normalize each row of R:
+- get format_vector, context_vector, style_vector
+
+10. Build topic separately:
+- topic = mean(P, axis=0)
+- normalize(topic)
+
+
+14. Small practical interpretation
+
+This system lets one phrase contribute to several dimensions at once.
+
+Example:
+- "capsule hotel" may contribute strongly to context
+- also somewhat to format or style
+
+That is intentional.
+We are not doing hard classification.
+We are doing soft semantic routing.
+
+
+15. Why this design is a good fit for the project
+
+It works well for a hackathon because:
+- it is more expressive than plain tag overlap
+- it is still interpretable
+- it can be implemented efficiently with batched embeddings and numpy matrix operations
+- it keeps the retrieval pipeline lightweight enough to ship

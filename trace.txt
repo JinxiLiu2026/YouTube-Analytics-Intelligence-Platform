@@ -1,0 +1,183 @@
+=== Feature Toggle Demo ===
+Country: US
+Preset: capsule_hotel
+Title: I Tried Surviving 24 Hours in Tokyo's Weirdest Capsule Hotel
+Tags: tokyo travel, capsule hotel, japan vlog, 24 hour challenge
+
+Loading processed vector index...
+Rows loaded: 16400
+
+=== All Features ===
+Enabled features: topic, format, context, style
+Pools: coarse=1000 relevant=3
+
+Top by Similarity:
+1. [US] Hello I went to Japan
+   total=0.6811 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+   tags=rtgame, rt, game, rtgames, rtgaming, rt games, rtgamecrowd, rt gaming, rt game, rtgame twitch
+
+2. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6686 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+   tags=old japanese house, cleaning vlog japan, lazy day at home vlog, slow living japan, old house cleaning, japanese house vlog, life in japan vlog, home reset vlog, cleaning my house vlog, cozy home vlog japan
+
+3. [US] A low day in my homeless van life in Japan
+   total=0.6462 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+   tags=van life japan, homeless in japan, living in a van, japanese van life, day in my life van life, real life vlog, low motivation day, underground parking lot van life, struggling but keep going, nomad life japan
+
+Final Reference Videos:
+1. [US] Hello I went to Japan
+   total=0.6811 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+
+2. [US] A low day in my homeless van life in Japan
+   total=0.6462 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+
+3. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6686 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+
+---
+
+=== Topic Only ===
+Enabled features: topic
+Pools: coarse=1000 relevant=3
+
+Top by Similarity:
+1. [US] Hello I went to Japan
+   total=0.7080 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+   tags=rtgame, rt, game, rtgames, rtgaming, rt games, rtgamecrowd, rt gaming, rt game, rtgame twitch
+
+2. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6946 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+   tags=old japanese house, cleaning vlog japan, lazy day at home vlog, slow living japan, old house cleaning, japanese house vlog, life in japan vlog, home reset vlog, cleaning my house vlog, cozy home vlog japan
+
+3. [US] A low day in my homeless van life in Japan
+   total=0.6610 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+   tags=van life japan, homeless in japan, living in a van, japanese van life, day in my life van life, real life vlog, low motivation day, underground parking lot van life, struggling but keep going, nomad life japan
+
+Final Reference Videos:
+1. [US] Hello I went to Japan
+   total=0.7080 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+
+2. [US] A low day in my homeless van life in Japan
+   total=0.6610 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+
+3. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6946 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+
+---
+
+=== Topic + Context ===
+Enabled features: topic, context
+Pools: coarse=1000 relevant=3
+
+Top by Similarity:
+1. [US] Hello I went to Japan
+   total=0.6899 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+   tags=rtgame, rt, game, rtgames, rtgaming, rt games, rtgamecrowd, rt gaming, rt game, rtgame twitch
+
+2. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6694 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+   tags=old japanese house, cleaning vlog japan, lazy day at home vlog, slow living japan, old house cleaning, japanese house vlog, life in japan vlog, home reset vlog, cleaning my house vlog, cozy home vlog japan
+
+3. [US] A low day in my homeless van life in Japan
+   total=0.6448 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+   tags=van life japan, homeless in japan, living in a van, japanese van life, day in my life van life, real life vlog, low motivation day, underground parking lot van life, struggling but keep going, nomad life japan
+
+Final Reference Videos:
+1. [US] Hello I went to Japan
+   total=0.6899 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+
+2. [US] A low day in my homeless van life in Japan
+   total=0.6448 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+
+3. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6694 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+
+---
+
+=== Format + Style ===
+Enabled features: format, style
+Pools: coarse=1000 relevant=3
+
+Top by Similarity:
+1. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6671 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+   tags=old japanese house, cleaning vlog japan, lazy day at home vlog, slow living japan, old house cleaning, japanese house vlog, life in japan vlog, home reset vlog, cleaning my house vlog, cozy home vlog japan
+
+2. [US] Hello I went to Japan
+   total=0.6649 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+   tags=rtgame, rt, game, rtgames, rtgaming, rt games, rtgamecrowd, rt gaming, rt game, rtgame twitch
+
+3. [US] A low day in my homeless van life in Japan
+   total=0.6488 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+   tags=van life japan, homeless in japan, living in a van, japanese van life, day in my life van life, real life vlog, low motivation day, underground parking lot van life, struggling but keep going, nomad life japan
+
+Final Reference Videos:
+1. [US] Hello I went to Japan
+   total=0.6649 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+
+2. [US] A low day in my homeless van life in Japan
+   total=0.6488 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+
+3. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6671 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+
+---
+
+=== Context Only ===
+Enabled features: context
+Pools: coarse=1000 relevant=3
+
+Top by Similarity:
+1. [US] Hello I went to Japan
+   total=0.6609 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+   tags=rtgame, rt, game, rtgames, rtgaming, rt games, rtgamecrowd, rt gaming, rt game, rtgame twitch
+
+2. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6291 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+   tags=old japanese house, cleaning vlog japan, lazy day at home vlog, slow living japan, old house cleaning, japanese house vlog, life in japan vlog, home reset vlog, cleaning my house vlog, cozy home vlog japan
+
+3. [US] A low day in my homeless van life in Japan
+   total=0.6189 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+   tags=van life japan, homeless in japan, living in a van, japanese van life, day in my life van life, real life vlog, low motivation day, underground parking lot van life, struggling but keep going, nomad life japan
+
+Final Reference Videos:
+1. [US] Hello I went to Japan
+   total=0.6609 topic=0.7080 format=0.7100 context=0.6609 style=0.6047
+   views=327865 channel=RTGame
+
+2. [US] A low day in my homeless van life in Japan
+   total=0.6189 topic=0.6610 format=0.6765 context=0.6189 style=0.6118
+   views=81107 channel=Nomad Push
+
+3. [US] Slow Week at Home Cleaning My Old Japanese House
+   total=0.6291 topic=0.6946 format=0.7083 context=0.6291 style=0.6122
+   views=69579 channel=silvie the queen
+
+---

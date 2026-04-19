@@ -1,0 +1,540 @@
+YouTube 视频匹配算法中文说明
+
+这份文档记录的是我们项目里“当前真正落地在代码中”的匹配算法。
+它的目的不是做一个学术上最复杂的检索系统，而是做一个：
+
+1. 可以在 hackathon 时间内稳定跑起来
+2. 可以解释给队友和评委听
+3. 能找到“主题接近 + 可参考”的视频
+
+
+====================
+一、整体思路
+====================
+
+我们现在不是直接用标题字符串做关键词匹配。
+也不是只看 tag。
+
+而是把一个视频表示成 4 个语义向量：
+
+1. topic_vector
+2. format_vector
+3. context_vector
+4. style_vector
+
+然后用户输入自己的视频标题 / tag 之后，
+我们也把它编码成同样的 4 个向量，
+再和数据库里所有视频做相似度比较。
+
+最后不是简单取“最像的前 5 个”，
+而是：
+
+1. 先找到足够相关的一小批候选
+2. 再在这批候选里，选 views 更高的视频作为最终参考
+
+这样做的原因是：
+如果某个视频虽然和你很像，但本身播放量很低，
+它就不一定是一个好的“参考样本”。
+
+
+====================
+二、输入是怎么拆的
+====================
+
+我们现在的基本单位不是 token，而是 phrase。
+
+当前规则：
+
+1. 整个 title 作为 1 个 phrase
+2. 每个完整的 tag 作为 1 个 phrase
+
+例子：
+
+Title:
+"24 Hours in Tokyo's Weirdest Capsule Hotel Vlog"
+
+Tags:
+"tokyo travel"
+"capsule hotel"
+"japan vlog"
+
+那么这个视频的 phrase 列表就是：
+
+1. "24 Hours in Tokyo's Weirdest Capsule Hotel Vlog"
+2. "tokyo travel"
+3. "capsule hotel"
+4. "japan vlog"
+
+注意：
+
+1. title 不会再被拆成更小的词
+2. tag 也不会再拆词，而是每个 tag 整体当作一个 phrase
+3. 如果 title 和 tag 出现完全重复的 phrase，会去重，避免重复计算
+
+
+====================
+三、每个 phrase 如何变成向量
+====================
+
+对每个 phrase，我们调用 embedding 模型，
+得到一个 embedding 向量。
+
+记作：
+
+e_i ∈ R^d
+
+其中：
+
+1. i 表示第 i 个 phrase
+2. d 表示 embedding 维度
+
+在当前实现里，每个 phrase embedding 会先做一次 L2 normalize：
+
+e_i <- e_i / ||e_i||
+
+这样做的作用是：
+
+1. 让不同 phrase 的向量长度更可控
+2. 后续做点乘时，更接近 cosine similarity 的效果
+
+
+====================
+四、四个维度分别是什么
+====================
+
+我们现在用 4 个维度来表示视频：
+
+1. topic
+2. format
+3. context
+4. style
+
+其中：
+
+1. topic 表示“这个视频大致在讲什么”
+2. format 表示“视频形式是什么”，比如 vlog / reaction / tutorial
+3. context 表示“发生在什么场景 / 地点 / 环境”
+4. style 表示“气质和表达风格”，比如 funny / weird / emotional
+
+
+====================
+五、topic_vector 怎么算
+====================
+
+topic 是最直接的一维。
+
+做法很简单：
+把这个视频所有 phrase 的 embedding 做平均，然后再做一次 L2 normalize。
+
+数学上：
+
+topic_raw = (1 / n) * Σ e_i
+
+topic_vector = topic_raw / ||topic_raw||
+
+其中 n 是 phrase 数量。
+
+直觉上：
+
+topic_vector 就是在表达“这个视频整体在说什么”。
+
+它不强行把 phrase 分到某个固定类别，
+而是直接用所有 phrase 的平均语义方向来代表主题。
+
+
+====================
+六、format / context / style 各自怎么来
+====================
+
+这三个维度不是直接平均，
+而是要先让每个 phrase 决定：
+它更偏向 format、context、style 里的哪一个。
+
+
+--------------------
+6.1 原型向量 prototype
+--------------------
+
+我们先为每个维度准备一组 seed words：
+
+format 的 seeds：
+vlog, reaction, review, interview, breakdown, tutorial, livestream, highlights, commentary, analysis
+
+context 的 seeds：
+city, country, place, location, setting, environment, venue, destination, region
+
+style 的 seeds：
+dramatic, funny, weird, shocking, intense, emotional, exclusive, chaotic, surprising, curious
+
+然后分别对每组 seeds 做 embedding，
+再取平均并做 L2 normalize，
+得到 3 个 prototype 向量：
+
+1. p_format
+2. p_context
+3. p_style
+
+
+--------------------
+6.2 phrase 对三个维度的相关性
+--------------------
+
+对于某个 phrase embedding e_i，
+分别和三个 prototype 做 cosine similarity：
+
+r_format(i)  = max(cos(e_i, p_format), 0)
+r_context(i) = max(cos(e_i, p_context), 0)
+r_style(i)   = max(cos(e_i, p_style), 0)
+
+这里用了 max(., 0)，也就是把负值截断成 0。
+
+原因：
+
+1. 我们更关心“有多相关”
+2. 不希望某个 phrase 因为和某一维负相关，就出现很难解释的负权重
+
+
+--------------------
+6.3 softmax 得到 phrase 在三个维度上的分配权重
+--------------------
+
+对每个 phrase，我们把这 3 个分数做 softmax：
+
+[w_format(i), w_context(i), w_style(i)]
+= softmax([r_format(i), r_context(i), r_style(i)] * temperature)
+
+当前 temperature = 6.0
+
+直觉上：
+
+1. 如果一个 phrase 更像 context，它在 context 上的权重就更大
+2. 如果一个 phrase 同时和多个维度都有关，它就会被“分配”到多个维度
+
+如果某个 phrase 对三个维度的分数都是 0，
+当前实现会直接平均分：
+
+w_format = w_context = w_style = 1/3
+
+
+--------------------
+6.4 title 比 tag 更重要
+--------------------
+
+我们现在给 title 更高的权重。
+
+规则：
+
+1. title phrase 的 source_weight = 2.0
+2. 每个 tag phrase 的 source_weight = 1.0
+
+也就是说，
+如果一个信息出现在 title 里，
+它会比出现在单个 tag 里更重要。
+
+最终每个 phrase 在三个维度上的聚合权重是：
+
+format_weight(i)  = w_format(i)  * source_weight(i)
+context_weight(i) = w_context(i) * source_weight(i)
+style_weight(i)   = w_style(i)   * source_weight(i)
+
+
+--------------------
+6.5 聚合成三个维度向量
+--------------------
+
+然后我们分别做加权平均：
+
+format_raw  = weighted_average({e_i}, {format_weight(i)})
+context_raw = weighted_average({e_i}, {context_weight(i)})
+style_raw   = weighted_average({e_i}, {style_weight(i)})
+
+这里的 weighted_average 不是简单求和，而是：
+
+weighted_average = (Σ alpha_i * e_i) / (Σ alpha_i)
+
+这样做的意义是：
+
+1. phrase 更多的视频不会因为“项数多”而数值更大
+2. 我们得到的是平均语义方向，不是总和
+
+最后再分别做一次 L2 normalize：
+
+format_vector  = format_raw / ||format_raw||
+context_vector = context_raw / ||context_raw||
+style_vector   = style_raw / ||style_raw||
+
+
+====================
+七、一个视频最终的向量签名
+====================
+
+所以，任意一个视频最后会被表示成：
+
+1. topic_vector
+2. format_vector
+3. context_vector
+4. style_vector
+
+数据库里的每条视频在预处理阶段都会算好并存下来。
+
+
+====================
+八、查询时怎么计算相似度
+====================
+
+用户输入 title / tags 之后，
+我们也按完全相同的方式算出 4 个 query 向量：
+
+1. q_topic
+2. q_format
+3. q_context
+4. q_style
+
+然后对数据库中每条视频分别算 4 个 cosine similarity：
+
+s_topic   = cos(q_topic,   v_topic)
+s_format  = cos(q_format,  v_format)
+s_context = cos(q_context, v_context)
+s_style   = cos(q_style,   v_style)
+
+
+====================
+九、final score 怎么算
+====================
+
+默认权重是：
+
+1. topic   = 0.40
+2. format  = 0.20
+3. context = 0.25
+4. style   = 0.15
+
+所以总分是：
+
+final_score
+= 0.40 * s_topic
++ 0.20 * s_format
++ 0.25 * s_context
++ 0.15 * s_style
+
+这就是当前的主相似度分数。
+
+
+====================
+十、feature toggle 怎么生效
+====================
+
+前端现在有 4 个可选开关：
+
+1. topic
+2. format
+3. context
+4. style
+
+如果用户关闭其中某些项，
+系统不会再使用那些维度。
+
+比如用户只保留：
+
+1. topic
+2. context
+
+那么原始权重 0.40 和 0.25 会重新归一化成：
+
+topic   = 0.40 / (0.40 + 0.25)
+context = 0.25 / (0.40 + 0.25)
+
+而 format 和 style 的权重直接变成 0。
+
+所以：
+
+1. toggle 不是简单“展示不同字段”
+2. 而是真的会改变最终相似度分数的计算方式
+
+
+====================
+十一、为什么不是直接在 17 万条里全量精排
+====================
+
+虽然现在矩阵乘法已经很快了，
+但我们还是保留了两阶段检索逻辑。
+
+原因：
+
+1. 更高效
+2. 更容易控制“先相关，再热门”的筛选策略
+
+
+====================
+十二、两阶段检索流程
+====================
+
+当前检索不是一步选出最终前 5，
+而是分成 3 个阶段：
+
+1. coarse pool（粗筛）
+2. relevance gate（相关性门槛）
+3. views rerank（在相关视频里按播放量选参考视频）
+
+
+--------------------
+12.1 第一阶段：粗筛
+--------------------
+
+我们先对全库每条视频都算一次 total score。
+
+然后只保留一个 coarse pool。
+
+当前参数：
+
+1. 取前 10%
+2. 但最多不超过 1000 条
+3. 至少保留 50 条
+
+也就是：
+
+coarse_limit = max(50, min(1000, ceil(N * 0.10)))
+
+其中 N 是当前国家数据集的视频总数。
+
+然后从全库中取 total score 最高的 coarse_limit 条视频，
+作为第二阶段候选。
+
+注意：
+现在代码里的粗筛已经不是“只看 topic”，
+而是直接看当前启用维度下的 total score。
+
+
+--------------------
+12.2 第二阶段：相关性门槛
+--------------------
+
+对 coarse pool 里的候选，
+我们重新按 total score 排序。
+
+然后设最高分为 best_total。
+
+当前只有同时满足下面两个条件的视频，
+才算“真正相关”：
+
+1. total_score >= 0.60
+2. total_score >= best_total * 0.85
+
+也就是同时满足：
+
+1. 绝对门槛
+2. 相对门槛
+
+这样做是为了避免两种问题：
+
+1. 明明和 query 不太像，但因为数据里没有更好的，也硬被选中
+2. query 很强，但后面差一截的视频也混进来
+
+
+--------------------
+12.3 第三阶段：在相关视频里按 views 选最终参考视频
+--------------------
+
+如果通过 relevance gate 的视频不为空，
+我们不会直接取“分数最高的前 5 个”。
+
+而是：
+
+1. 先保留这批“足够相关”的视频
+2. 再在它们内部，优先按 views 降序排序
+3. 如果 views 一样，再用 total score 作为次级排序
+
+代码里实际排序是：
+
+key = (views, total_score)
+
+降序排列后取前 top_k。
+
+这一步对应我们之前讨论的策略：
+
+“先保证足够相关，再从相关视频里选更有参考价值、播放量更高的样本”
+
+
+====================
+十三、为什么这样比直接取 similarity top 5 更好
+====================
+
+如果直接取 similarity top 5，
+会有两个问题：
+
+1. 可能拿到非常冷门的视频
+2. 虽然相似，但不一定值得参考
+
+而现在这套逻辑是：
+
+1. 先用相似度保证主题不跑偏
+2. 再用 views 保证参考样本本身有“成功案例”的价值
+
+所以最终返回的是：
+
+“足够相关 + 更值得参考”的视频
+
+而不是“最像但不一定火”的视频。
+
+
+====================
+十四、rough idea 模式有什么不同
+====================
+
+如果用户输入的是一句 rough idea，
+系统不会直接拿那整句话硬搜。
+
+而是会先做一步 query rewrite：
+
+1. 生成一个 search_title
+2. 生成一组 search_tags
+
+然后再把这组 search_title + search_tags 送进同样的向量匹配流程。
+
+所以 rough idea 模式和普通 draft 模式的区别是：
+
+1. 普通模式：直接拿用户输入的 title / tags 去编码
+2. rough idea 模式：先重写成更适合检索的 query，再编码
+
+后面的匹配算法完全一样。
+
+
+====================
+十五、当前算法的优点
+====================
+
+1. 结构清楚，容易解释
+2. 预处理后检索速度快
+3. 可以通过 4 个维度来解释“为什么匹配到这些视频”
+4. 可以让前端开关直接控制匹配逻辑
+5. 最终返回的视频，不只是像，而且更有参考价值
+
+
+====================
+十六、当前算法的局限
+====================
+
+1. topic 仍然是“所有 phrase 平均”，不是显式抽取实体/主题树
+2. format / context / style 依赖 prototype seed 的质量
+3. 如果某个国家的数据里本来就缺某个题材，再好的算法也可能找不到理想样本
+4. 当前最终热门度只用了 views，没有引入更复杂的 hot score
+
+不过对 hackathon MVP 来说，
+这套方案已经足够：
+
+1. 可运行
+2. 可解释
+3. 可 demo
+4. 可以自然接到后面的 LLM 建议生成模块
+
+
+====================
+十七、一句话总结
+====================
+
+一句话总结这套算法：
+
+“先把视频编码成 topic / format / context / style 四个语义向量，
+先按综合相似度找到足够相关的一批候选，
+再在这批相关候选里按 views 选出最值得参考的最终视频。”
+
