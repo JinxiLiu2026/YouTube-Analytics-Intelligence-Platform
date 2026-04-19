@@ -1,0 +1,152 @@
+## Inspiration
+
+We were inspired by a simple creator problem: most people know that titles, tags, descriptions, and video structure matter, but very few know how to improve them using real evidence instead of guesswork. In the hackathon theme, the challenge was not just to analyze YouTube trending data, but to turn that insight into a product people could actually use.
+
+We wanted to build something practical for creators. Instead of making a dashboard full of charts, we focused on a workflow that answers a much more direct question:
+
+"Given my video idea or draft metadata, what should I change to make it stronger?"
+
+That led us to a product centered on retrieval, comparison, and grounded suggestions. Our goal was to make AI advice feel less random by connecting every recommendation back to similar videos from the dataset.
+
+## What it does
+
+YouTube Analytics Intelligence Platform helps users improve their video packaging and creative direction using real trending-video references.
+
+A user can either:
+- start with an existing video draft by entering a title, tags, and description
+- start with a rough idea and let the system turn that idea into a searchable query
+
+The platform then:
+- searches a processed YouTube trending dataset for similar videos
+- finds the most relevant reference videos using our custom similarity pipeline
+- generates stronger title, tag, and description suggestions
+- produces creation tips for the video itself
+- shows the matched reference videos, including links, view counts, similarity scores, and summaries
+
+The key product idea is that the AI does not just generate advice in a vacuum. It first retrieves similar videos, then uses those references as evidence for its suggestions whenever possible.
+
+## How we built it
+
+We built the project as a lightweight full-stack demo with three main layers:
+
+### 1. Data processing layer
+
+We downloaded and processed the 2026 YouTube Trending Videos dataset and built a retrieval-ready index. For each video, we kept a lightweight set of fields such as:
+- `video_id`
+- `title`
+- `tags`
+- `description`
+- `views`
+- `channel_title`
+- `country`
+
+We then converted each video into multiple semantic feature vectors:
+- topic
+- format
+- context
+- style
+
+Instead of relying only on keyword overlap, we represented each video through phrase-level embeddings derived from its title and tags. Those phrases were projected into different semantic dimensions, which allowed us to compare videos in a more flexible way.
+
+In simplified form, for each phrase embedding \(p_i\), we computed its relevance to each semantic axis using dot products:
+
+\[
+s_{i,k} = p_i \cdot q_k
+\]
+
+where \(q_k\) is the seed vector for a dimension such as format, context, or style.
+
+We then normalized and aggregated these weighted phrase embeddings into a final representation for each dimension. This gave us a structured vector representation for every video without training a custom model from scratch.
+
+### 2. Retrieval and ranking layer
+
+At runtime, when a user submits a draft or a rough idea, we:
+- convert the input into search-ready title and tags
+- encode the query into the same feature-vector space
+- compare the query against preprocessed videos
+- compute a final similarity score from the selected dimensions
+- select the most relevant pool
+- then surface the most useful reference videos based on both relevance and views
+
+We also added user-controllable matching signals, so the system can optionally emphasize or ignore dimensions like topic, format, context, and style.
+
+### 3. Suggestion and insight layer
+
+After retrieval, we used LLM-based generation in two ways:
+- metadata rewrite suggestions for title, tags, and description
+- creation tips based on matched reference videos and selected video transcript analysis
+
+We also integrated a second analysis module that takes matched video IDs, analyzes video transcript segments, and summarizes useful creative patterns. To keep latency manageable, transcript analysis does not consume the entire video. Instead, it samples the beginning, middle, and end of each transcript.
+
+On the frontend, we built an interactive interface where users can:
+- input metadata or a rough idea
+- choose similarity signals
+- see a loading state
+- view three clear output modules:
+  - suggested metadata
+  - creation tips
+  - matched videos
+
+## Challenges we ran into
+
+One of the biggest challenges was retrieval quality.
+
+At first, a simple semantic-matching approach produced results that were technically similar but not actually useful. For example, videos could match on broad travel-related language while still being about completely different topics. We realized that "semantic similarity" alone was not enough. The real problem was identifying the true focus of a video.
+
+That led us through multiple iterations:
+- separate matching of tags vs. title/description
+- weighted matching across different fields
+- phrase-based vector aggregation
+- multi-dimensional representations like topic, format, context, and style
+- relevance gating before popularity-based final selection
+
+Another major challenge was speed. The full dataset was large enough that naive runtime computation would have been too slow. We solved this by preprocessing embeddings in batches, storing vectorized data, and keeping only the necessary matrices in memory during retrieval.
+
+We also ran into integration challenges:
+- multiple environments and config files across team modules
+- API connection and model compatibility issues
+- prompt robustness when there were no strong matched videos
+- UI polish under tight time pressure
+
+Finally, a subtle product challenge was trust. AI suggestions can easily feel generic or hallucinated. We had to work hard on prompt design and interface structure so users could understand why a suggestion was being made and which references it came from.
+
+## Accomplishments that we're proud of
+
+We are proud that we turned a broad hackathon theme into a working product with a clear user flow.
+
+Some highlights:
+- building a full retrieval-to-recommendation pipeline in a short time
+- designing a custom multi-dimensional similarity system instead of relying on a single naive vector search
+- preprocessing large country-level datasets fast enough to make the demo practical
+- integrating retrieval, metadata rewriting, transcript-based insight generation, and frontend presentation into one coherent experience
+- creating a product that is not just analytical, but actionable
+
+Most importantly, we are proud that our system gives users grounded suggestions instead of purely generic AI output. The matched-reference workflow became the core differentiator of the project.
+
+## What we learned
+
+We learned that in creator tools, usefulness matters more than theoretical sophistication.
+
+A perfect predictive model was unrealistic for a hackathon, but a well-designed retrieval-and-reasoning pipeline could still create real value. We also learned that:
+- search quality depends heavily on representation design
+- raw semantic similarity is often too loose for creative recommendation tasks
+- preprocessing and batching matter just as much as model choice
+- prompt design has to be robust to edge cases, especially when reference evidence is weak
+- product clarity is critical; even good outputs can feel confusing if the interface is too dense or too "debug-like"
+
+We also learned a lot about balancing engineering with UX. A technically correct result is not enough if users cannot immediately understand what they are looking at or why it matters.
+
+## What's next for YouTube Analytics Intelligence Platform
+
+The next step is to make the platform more personalized, scalable, and predictive.
+
+Future directions include:
+- processing all countries into a unified multi-region index
+- improving topic modeling with more robust semantic clustering
+- adding thumbnail and visual-style analysis
+- scoring suggestions with estimated click or trend potential
+- supporting creator-specific strategy by niche, audience, and video format
+- adding stronger export and workflow features for real creator use
+- turning the current retrieval engine into a production API
+
+Longer term, we see this becoming more than a metadata assistant. It could evolve into a full creator decision-support system: helping users shape not only what they publish, but how they package, position, and prioritize ideas before they upload.

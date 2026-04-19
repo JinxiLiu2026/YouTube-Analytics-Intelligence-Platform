@@ -1,0 +1,33 @@
+.venv/
+**/.venv/
+.env
+**/.env
+config.json
+New project/config.json
+__pycache__/
+**/__pycache__/
+*.pyc
+.DS_Store
+**/.DS_Store
+.pytest_cache/
+.pycache_tmp/
+
+# Large raw data and generated processed indexes are not committed.
+archive/
+processed/*
+!processed/US_Trending.processed.jsonl
+
+# Small demo raw data is kept for reproducibility.
+!processed/
+!demo_data/
+!demo_data/US_Trending_demo.csv
+
+# Local outputs / artifacts
+trace.txt
+integration_video_insights_demo_output.json
+New project/analysis_result_iphone17_fast.json
+New project/*.o
+New project/main_simple
+.env
+*.env
+config.py
